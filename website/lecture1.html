@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lecture 1 | SE Notes</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; color: #222; }
+header { background: linear-gradient(135deg,#1a237e,#283593); color: #fff; padding: 24px 40px; }
+header h1 { font-size: 2rem; }
+header p  { opacity: .85; margin-top: 6px; }
+nav { background: #1e3a8a; display: flex; flex-wrap: wrap; gap: 4px; padding: 10px 40px; }
+nav a { color: #cbd5e1; text-decoration: none; padding: 7px 14px; border-radius: 6px;
+        font-size: .9rem; transition: background .2s; }
+nav a:hover, nav a.active { background: #3b82f6; color: #fff; }
+main { max-width: 1100px; margin: 30px auto; padding: 0 20px 60px; }
+h2 { color: #1a237e; border-left: 5px solid #3b82f6; padding-left: 14px;
+     margin: 36px 0 14px; font-size: 1.55rem; }
+h3 { color: #1e3a8a; margin: 24px 0 10px; font-size: 1.2rem; }
+h4 { color: #2563eb; margin: 18px 0 8px; }
+p  { line-height: 1.8; margin-bottom: 12px; }
+ul,ol { margin: 10px 0 16px 26px; line-height: 1.9; }
+.card { background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.08);
+        padding: 28px 32px; margin-bottom: 28px; }
+.example { background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 8px;
+           padding: 16px 20px; margin: 14px 0; }
+.example strong { color: #1d4ed8; display: block; margin-bottom: 6px; }
+.myth-box { background: #fff7ed; border-left: 4px solid #f97316; border-radius: 8px;
+            padding: 14px 18px; margin: 12px 0; }
+.myth-box .myth { color: #c2410c; font-weight: 700; }
+.myth-box .reality { color: #166534; }
+.compare-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+.compare-table th { background: #1e3a8a; color: #fff; padding: 12px; text-align: left; }
+.compare-table td { padding: 11px 12px; border-bottom: 1px solid #e2e8f0; }
+.compare-table tr:nth-child(even) td { background: #f8fafc; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size:.8rem;
+         font-weight:700; margin-right:6px; }
+.badge-blue  { background:#dbeafe; color:#1d4ed8; }
+.badge-green { background:#dcfce7; color:#166534; }
+.badge-red   { background:#fee2e2; color:#991b1b; }
+.badge-orange{ background:#ffedd5; color:#9a3412; }
+.adv  { background:#dcfce7; border-left:4px solid #22c55e; border-radius:8px;
+        padding:14px 18px; margin:10px 0; }
+.dis  { background:#fee2e2; border-left:4px solid #ef4444; border-radius:8px;
+        padding:14px 18px; margin:10px 0; }
+.phase-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+              gap:18px; margin:18px 0; }
+.phase-card { background:#fff; border:1px solid #bfdbfe; border-radius:10px;
+              padding:18px; border-top:4px solid #3b82f6; }
+.phase-card h4 { color:#1d4ed8; margin-top:0; }
+footer { text-align:center; padding:30px; background:#1e3a8a; color:#94a3b8;
+         font-size:.9rem; margin-top:40px; }
+.q-num { display:inline-block; background:#1e3a8a; color:#fff; border-radius:50%;
+         width:30px; height:30px; line-height:30px; text-align:center;
+         font-weight:700; font-size:.85rem; margin-right:10px; flex-shrink:0; }
+.q-item { display:flex; align-items:flex-start; margin-bottom:16px; }
+.q-text { flex:1; line-height:1.7; }
+.ans   { background:#f0fdf4; border-left:3px solid #22c55e; padding:6px 12px;
+         border-radius:4px; margin-top:6px; font-size:.9rem; color:#166534; }
+.tf-true  { color:#166534; font-weight:700; }
+.tf-false { color:#991b1b; font-weight:700; }
+.opt { margin:4px 0 4px 10px; font-size:.95rem; }
+.opt.correct { color:#166534; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <h1>CSE 417: Software Engineering &amp; Design Patterns</h1>
+  <p>Metropolitan University &mdash; Md. Mushtaq Shahriyar Rafee</p>
+</header>
+
+<nav>
+  <a href="index.html">🏠 Home</a>
+  <a href="lecture1.html" class="active">L1: Intro</a>
+  <a href="lecture2.html">L2: SDLC</a>
+  <a href="lecture3.html">L3: Myths & Ethics</a>
+  <a href="lecture4.html">L4: Waterfall</a>
+  <a href="lecture5.html">L5: V-Shape & Incremental</a>
+  <a href="questions.html">📝 Questions</a>
+</nav>
+
+<main>
+<h2>Lecture 1: Introduction to Software Engineering</h2>
+
+<div class="card">
+  <h3>1. What is Software Engineering?</h3>
+  <h4>What is Software?</h4>
+  <p>A <strong>collection of programs</strong> that accomplish any particular task. Software is not just
+  code — it includes documentation, data, and the procedures that govern its use.</p>
+  <h4>What is Engineering?</h4>
+  <p>The <strong>application of scientific and practical knowledge</strong> to invent, design, build,
+  maintain, and improve frameworks, processes, systems, and products.</p>
+  <h4>Definition of Software Engineering</h4>
+  <p><em>"Software engineering is an engineering discipline that is concerned with all aspects of software
+  production from the early stages of system specification through to maintaining the system after it has
+  gone into use."</em></p>
+  <div class="example">
+    <strong>💡 Real-World Example</strong>
+    Building a banking app (like bKash or Nagad) requires gathering user requirements, designing the
+    architecture, writing secure code, testing transactions, deploying to servers, and continuously
+    maintaining it — all of these together form <em>software engineering</em>.
+  </div>
+</div>
+
+<div class="card">
+  <h3>2. Software Application Domains (7 Categories)</h3>
+
+  <h4>1. System Software</h4>
+  <p>Software designed to provide a <strong>platform for other software</strong> or to service other programs.
+  It interacts directly with the hardware.</p>
+  <ul>
+    <li>Examples: Windows, Linux, macOS, Android, iOS, device drivers</li>
+    <li>Written in: C, C++, Assembly</li>
+  </ul>
+
+  <h4>2. Application Software</h4>
+  <p>Stand-alone programs that <strong>solve a specific business need</strong> for the end user.</p>
+  <ul>
+    <li>Examples: MS Office, Google Chrome, Adobe Photoshop, Skype, Notepad</li>
+  </ul>
+  <div class="example">
+    <strong>💡 Example</strong>
+    When you use Microsoft Word to write a report, you are using application software. The underlying
+    Windows OS is system software providing Word a platform to run.
+  </div>
+
+  <h4>3. Engineering / Scientific Software</h4>
+  <p>Software satisfying the needs of <strong>scientific or engineering users</strong> to perform
+  enterprise-specific calculations or simulations.</p>
+  <ul><li>Examples: MATLAB, AutoCAD, PSPICE, ORCAD, ANSYS</li></ul>
+
+  <h4>4. Embedded Software</h4>
+  <p>Software that <strong>resides within a product or system</strong> and is used to implement and
+  control features and functions. Usually has strict real-time constraints.</p>
+  <ul><li>Examples: Microwave oven keypad controller, washing machine controller, ABS braking system in cars</li></ul>
+  <div class="example">
+    <strong>💡 Example</strong>
+    The software inside your refrigerator that controls temperature and shows alerts on a screen is
+    embedded software. It runs on a tiny microcontroller permanently fixed inside the appliance.
+  </div>
+
+  <h4>5. Web Applications</h4>
+  <p>Software <strong>accessed using a web browser</strong>, providing features and content to end users,
+  often integrated with corporate databases.</p>
+  <ul><li>Examples: Online shopping carts, Google Docs, YouTube, online banking portals</li></ul>
+
+  <h4>6. Product-Line / Business Software</h4>
+  <p>The <strong>most widely used category</strong>; supports business operations and enterprise workflows.</p>
+  <ul><li>Examples: ERP systems, hospital management software, inventory management, accounting software</li></ul>
+
+  <h4>7. Artificial Intelligence Software</h4>
+  <p>Computer programs that <strong>mimic human behavior</strong> by learning from data patterns and insights.</p>
+  <ul><li>Examples: Robotics, expert systems, face recognition, voice assistants (Siri, Alexa), ChatGPT</li></ul>
+</div>
+
+<div class="card">
+  <h3>3. System Software vs Application Software</h3>
+  <table class="compare-table">
+    <tr><th>System Software</th><th>Application Software</th></tr>
+    <tr><td>Maintains system resources &amp; provides a path for application software to run</td>
+        <td>Built for specific tasks</td></tr>
+    <tr><td>Low-level languages used (C, Assembly)</td><td>High-level languages used (Python, Java, C#)</td></tr>
+    <tr><td>System stops without system software</td><td>System always runs without application software</td></tr>
+    <tr><td>Runs independently</td><td>Dependent on system software</td></tr>
+    <tr><td>Operates in the background until shutdown</td><td>Runs in the front according to user's request</td></tr>
+    <tr><td>Example: Windows, Linux</td><td>Example: Photoshop, VLC Player</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>4. Software Engineering vs Computer Engineering</h3>
+  <table class="compare-table">
+    <tr><th>Software Engineering</th><th>Computer Engineering</th></tr>
+    <tr><td>Focuses only on software — how it is formed and the processes involved</td>
+        <td>Covers both software AND hardware</td></tr>
+    <tr><td>Applies principles of engineering to create software</td>
+        <td>Applies mathematical formulations and technology implementations</td></tr>
+    <tr><td>Concerned with software lifecycle</td>
+        <td>Provides knowledge in networking, processors, databases</td></tr>
+    <tr><td>Sub-field</td><td>Base/foundation of Software Engineering</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>5. Essential Attributes of Good Software</h3>
+
+  <h4>1. Maintainability</h4>
+  <p>Software should be written so that it can <strong>evolve to meet changing needs</strong> of customers.
+  This is critical because software change is an inevitable requirement of a changing business environment.</p>
+  <div class="example">
+    <strong>💡 Example</strong>
+    When WhatsApp added the "Status" feature, developers had to modify existing code without breaking the
+    chat functionality — this is maintainability in action.
+  </div>
+
+  <h4>2. Dependability and Security</h4>
+  <p>Software dependability includes <strong>reliability, security, and safety</strong>. Dependable software
+  should not cause physical or economic damage in the event of system failure. Malicious users should not
+  be able to access or damage the system.</p>
+  <div class="example">
+    <strong>💡 Example</strong>
+    An ATM software must be dependable — if it crashes during a transaction, it must not deduct money
+    without dispensing cash. It must also be secure against hacking attempts.
+  </div>
+
+  <h4>3. Efficiency</h4>
+  <p>Software should <strong>not make wasteful use of system resources</strong> (memory, processor cycles).
+  Efficiency includes responsiveness, processing time, and memory utilization.</p>
+  <div class="example">
+    <strong>💡 Example</strong>
+    A web page that loads in 1 second is more efficient than one that takes 10 seconds. Google's search
+    engine is optimized to return results in milliseconds.
+  </div>
+
+  <h4>4. Acceptability</h4>
+  <p>Software must be <strong>acceptable to the type of users</strong> for which it is designed. It must be
+  understandable, usable, and compatible with other systems they use.</p>
+  <div class="example">
+    <strong>💡 Example</strong>
+    A hospital management software must have a simple, clear UI that doctors and nurses (not programmers)
+    can use without extensive training.
+  </div>
+</div>
+</main>
+<footer>CSE 417 &mdash; Software Engineering &amp; Design Patterns &mdash; All Rights Reserved</footer>
+</body>
+</html>

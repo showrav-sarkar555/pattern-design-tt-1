@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lecture 2 | SE Notes</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; color: #222; }
+header { background: linear-gradient(135deg,#1a237e,#283593); color: #fff; padding: 24px 40px; }
+header h1 { font-size: 2rem; }
+header p  { opacity: .85; margin-top: 6px; }
+nav { background: #1e3a8a; display: flex; flex-wrap: wrap; gap: 4px; padding: 10px 40px; }
+nav a { color: #cbd5e1; text-decoration: none; padding: 7px 14px; border-radius: 6px;
+        font-size: .9rem; transition: background .2s; }
+nav a:hover, nav a.active { background: #3b82f6; color: #fff; }
+main { max-width: 1100px; margin: 30px auto; padding: 0 20px 60px; }
+h2 { color: #1a237e; border-left: 5px solid #3b82f6; padding-left: 14px;
+     margin: 36px 0 14px; font-size: 1.55rem; }
+h3 { color: #1e3a8a; margin: 24px 0 10px; font-size: 1.2rem; }
+h4 { color: #2563eb; margin: 18px 0 8px; }
+p  { line-height: 1.8; margin-bottom: 12px; }
+ul,ol { margin: 10px 0 16px 26px; line-height: 1.9; }
+.card { background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.08);
+        padding: 28px 32px; margin-bottom: 28px; }
+.example { background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 8px;
+           padding: 16px 20px; margin: 14px 0; }
+.example strong { color: #1d4ed8; display: block; margin-bottom: 6px; }
+.myth-box { background: #fff7ed; border-left: 4px solid #f97316; border-radius: 8px;
+            padding: 14px 18px; margin: 12px 0; }
+.myth-box .myth { color: #c2410c; font-weight: 700; }
+.myth-box .reality { color: #166534; }
+.compare-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+.compare-table th { background: #1e3a8a; color: #fff; padding: 12px; text-align: left; }
+.compare-table td { padding: 11px 12px; border-bottom: 1px solid #e2e8f0; }
+.compare-table tr:nth-child(even) td { background: #f8fafc; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size:.8rem;
+         font-weight:700; margin-right:6px; }
+.badge-blue  { background:#dbeafe; color:#1d4ed8; }
+.badge-green { background:#dcfce7; color:#166534; }
+.badge-red   { background:#fee2e2; color:#991b1b; }
+.badge-orange{ background:#ffedd5; color:#9a3412; }
+.adv  { background:#dcfce7; border-left:4px solid #22c55e; border-radius:8px;
+        padding:14px 18px; margin:10px 0; }
+.dis  { background:#fee2e2; border-left:4px solid #ef4444; border-radius:8px;
+        padding:14px 18px; margin:10px 0; }
+.phase-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+              gap:18px; margin:18px 0; }
+.phase-card { background:#fff; border:1px solid #bfdbfe; border-radius:10px;
+              padding:18px; border-top:4px solid #3b82f6; }
+.phase-card h4 { color:#1d4ed8; margin-top:0; }
+footer { text-align:center; padding:30px; background:#1e3a8a; color:#94a3b8;
+         font-size:.9rem; margin-top:40px; }
+.q-num { display:inline-block; background:#1e3a8a; color:#fff; border-radius:50%;
+         width:30px; height:30px; line-height:30px; text-align:center;
+         font-weight:700; font-size:.85rem; margin-right:10px; flex-shrink:0; }
+.q-item { display:flex; align-items:flex-start; margin-bottom:16px; }
+.q-text { flex:1; line-height:1.7; }
+.ans   { background:#f0fdf4; border-left:3px solid #22c55e; padding:6px 12px;
+         border-radius:4px; margin-top:6px; font-size:.9rem; color:#166534; }
+.tf-true  { color:#166534; font-weight:700; }
+.tf-false { color:#991b1b; font-weight:700; }
+.opt { margin:4px 0 4px 10px; font-size:.95rem; }
+.opt.correct { color:#166534; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <h1>CSE 417: Software Engineering &amp; Design Patterns</h1>
+  <p>Metropolitan University &mdash; Md. Mushtaq Shahriyar Rafee</p>
+</header>
+
+<nav>
+  <a href="index.html">🏠 Home</a>
+  <a href="lecture1.html">L1: Intro</a>
+  <a href="lecture2.html" class="active">L2: SDLC</a>
+  <a href="lecture3.html">L3: Myths & Ethics</a>
+  <a href="lecture4.html">L4: Waterfall</a>
+  <a href="lecture5.html">L5: V-Shape & Incremental</a>
+  <a href="questions.html">📝 Questions</a>
+</nav>
+
+<main>
+<h2>Lecture 2: SDLC &amp; General Principles</h2>
+
+<div class="card">
+  <h3>1. Software Development Life Cycle (SDLC)</h3>
+  <h4>Why SDLC?</h4>
+  <p>Without a structured process, team members may start tasks in different orders — one writing code
+  first, another doing design, another testing — leading to <strong>project failure</strong>. SDLC provides
+  a disciplined and systematic framework for developing software, especially in team environments.</p>
+
+  <div class="example">
+    <strong>💡 Analogy</strong>
+    Building a house requires a fixed order: foundation → walls → roof → electrical → plumbing → finishing.
+    You cannot put the roof before the walls. SDLC gives the same structured order to software development.
+  </div>
+
+  <h3>The 7 Phases of SDLC</h3>
+  <div class="phase-grid">
+    <div class="phase-card">
+      <h4>Phase 1: Planning &amp; Requirement Analysis</h4>
+      <p>The <strong>most important stage</strong>. Business analyst meets client to gather requirements —
+      what to build, who are the end users, project objective. A <em>Feasibility Study</em> assesses whether
+      the project is practical and likely to succeed.</p>
+    </div>
+    <div class="phase-card">
+      <h4>Phase 2: Defining Requirements</h4>
+      <p>The <strong>SRS (Software Requirement Specification)</strong> document is created. It contains all
+      product requirements to be constructed and developed during the project lifecycle.</p>
+    </div>
+    <div class="phase-card">
+      <h4>Phase 3: Designing the Software</h4>
+      <p>All knowledge from requirements and analysis is used to <strong>design the software architecture</strong>.
+      Includes database design, UI design, and system architecture.</p>
+    </div>
+    <div class="phase-card">
+      <h4>Phase 4: Developing the Software</h4>
+      <p>Actual coding begins. Developers follow <strong>coding guidelines</strong> defined by management and
+      use programming tools to build the software.</p>
+    </div>
+    <div class="phase-card">
+      <h4>Phase 5: Testing</h4>
+      <p>Software is <strong>tested against requirements</strong> to verify it solves the needs gathered during
+      the requirements stage. Bugs are identified and fixed.</p>
+    </div>
+    <div class="phase-card">
+      <h4>Phase 6: Deployment</h4>
+      <p>Once certified bug-free, the software is <strong>deployed to production</strong> for real users.</p>
+    </div>
+    <div class="phase-card">
+      <h4>Phase 7: Maintenance</h4>
+      <p>Clients start using the system. <strong>Real issues emerge</strong> and requirements evolve. The team
+      fixes bugs, improves performance, and adds new features over time.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <strong>💡 Full SDLC Example — Building an E-Commerce Website</strong>
+    <ol>
+      <li><strong>Planning:</strong> Client wants an online clothing store. Budget is $50,000. Feasibility check: viable.</li>
+      <li><strong>Requirements:</strong> SRS created: product listing, cart, payment gateway, order tracking.</li>
+      <li><strong>Design:</strong> Database schema, UI wireframes, and API architecture designed.</li>
+      <li><strong>Development:</strong> React frontend, Node.js backend, MySQL database — coded.</li>
+      <li><strong>Testing:</strong> Unit tests, integration tests, load testing with 1000 users.</li>
+      <li><strong>Deployment:</strong> Hosted on AWS, SSL certificate configured, domain connected.</li>
+      <li><strong>Maintenance:</strong> Black Friday bug fixed, new category "Accessories" added.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="card">
+  <h3>2. The 7 General Principles of Software Engineering (David Hooker)</h3>
+  <p>David Hooker proposed seven principles that focus on the philosophy behind good software engineering.</p>
+
+  <div class="phase-grid">
+    <div class="phase-card">
+      <h4>Principle 1: The Reason It All Exists</h4>
+      <p>A software system exists for <strong>one reason: to provide value to its users</strong>.
+      Always ask: <em>"Does this add real value to the system?"</em></p>
+      <div class="example" style="margin-top:8px;">
+        <strong>Example:</strong> Adding a flashy animation that slows down page load adds no value — remove it.
+      </div>
+    </div>
+    <div class="phase-card">
+      <h4>Principle 2: KISS — Keep It Simple, Stupid!</h4>
+      <p>All design should be <strong>as simple as possible</strong>, but no simpler. Simple systems are
+      easier to understand, test, and maintain.</p>
+      <div class="example" style="margin-top:8px;">
+        <strong>Example:</strong> A login form needing only email + password is simpler than one requiring 5 fields.
+      </div>
+    </div>
+    <div class="phase-card">
+      <h4>Principle 3: Maintain the Vision</h4>
+      <p>A <strong>clear vision is essential</strong> to a successful project. Compromising the architectural
+      vision will eventually break even well-designed systems.</p>
+    </div>
+    <div class="phase-card">
+      <h4>Principle 4: What You Produce, Others Will Consume</h4>
+      <p>Always specify, design, and implement knowing <strong>someone else will maintain your code</strong>.
+      Write with clarity and documentation.</p>
+      <div class="example" style="margin-top:8px;">
+        <strong>Example:</strong> Writing clean, commented code so the next developer can understand it without asking you.
+      </div>
+    </div>
+    <div class="phase-card">
+      <h4>Principle 5: Be Open to the Future</h4>
+      <p>Systems must be ready to <strong>adapt to any changes</strong> — specifications can change at any
+      moment, and hardware platforms can become obsolete in months.</p>
+    </div>
+    <div class="phase-card">
+      <h4>Principle 6: Plan Ahead for Reuse</h4>
+      <p>Build software so that <strong>code and design can be reused</strong>. Planning for reuse reduces
+      cost and increases the value of components.</p>
+      <div class="example" style="margin-top:8px;">
+        <strong>Example:</strong> A reusable authentication library can be used across 10 different projects.
+      </div>
+    </div>
+    <div class="phase-card">
+      <h4>Principle 7: Think!</h4>
+      <p>Placing <strong>clear, complete thought before action</strong> almost always produces better results.
+      If you think and still do something wrong, it becomes a valuable learning experience.</p>
+    </div>
+  </div>
+</div>
+</main>
+<footer>CSE 417 &mdash; Software Engineering &amp; Design Patterns &mdash; All Rights Reserved</footer>
+</body>
+</html>
