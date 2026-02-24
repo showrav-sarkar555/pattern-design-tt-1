@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Questions | SE Notes</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; color: #222; }
+header { background: linear-gradient(135deg,#1a237e,#283593); color: #fff; padding: 24px 40px; }
+header h1 { font-size: 2rem; }
+header p  { opacity: .85; margin-top: 6px; }
+nav { background: #1e3a8a; display: flex; flex-wrap: wrap; gap: 4px; padding: 10px 40px; }
+nav a { color: #cbd5e1; text-decoration: none; padding: 7px 14px; border-radius: 6px;
+        font-size: .9rem; transition: background .2s; }
+nav a:hover, nav a.active { background: #3b82f6; color: #fff; }
+main { max-width: 1100px; margin: 30px auto; padding: 0 20px 60px; }
+h2 { color: #1a237e; border-left: 5px solid #3b82f6; padding-left: 14px;
+     margin: 36px 0 14px; font-size: 1.55rem; }
+h3 { color: #1e3a8a; margin: 24px 0 10px; font-size: 1.2rem; }
+h4 { color: #2563eb; margin: 18px 0 8px; }
+p  { line-height: 1.8; margin-bottom: 12px; }
+ul,ol { margin: 10px 0 16px 26px; line-height: 1.9; }
+.card { background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.08);
+        padding: 28px 32px; margin-bottom: 28px; }
+.example { background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 8px;
+           padding: 16px 20px; margin: 14px 0; }
+.example strong { color: #1d4ed8; display: block; margin-bottom: 6px; }
+.myth-box { background: #fff7ed; border-left: 4px solid #f97316; border-radius: 8px;
+            padding: 14px 18px; margin: 12px 0; }
+.myth-box .myth { color: #c2410c; font-weight: 700; }
+.myth-box .reality { color: #166534; }
+.compare-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+.compare-table th { background: #1e3a8a; color: #fff; padding: 12px; text-align: left; }
+.compare-table td { padding: 11px 12px; border-bottom: 1px solid #e2e8f0; }
+.compare-table tr:nth-child(even) td { background: #f8fafc; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size:.8rem;
+         font-weight:700; margin-right:6px; }
+.badge-blue  { background:#dbeafe; color:#1d4ed8; }
+.badge-green { background:#dcfce7; color:#166534; }
+.badge-red   { background:#fee2e2; color:#991b1b; }
+.badge-orange{ background:#ffedd5; color:#9a3412; }
+.adv  { background:#dcfce7; border-left:4px solid #22c55e; border-radius:8px;
+        padding:14px 18px; margin:10px 0; }
+.dis  { background:#fee2e2; border-left:4px solid #ef4444; border-radius:8px;
+        padding:14px 18px; margin:10px 0; }
+.phase-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+              gap:18px; margin:18px 0; }
+.phase-card { background:#fff; border:1px solid #bfdbfe; border-radius:10px;
+              padding:18px; border-top:4px solid #3b82f6; }
+.phase-card h4 { color:#1d4ed8; margin-top:0; }
+footer { text-align:center; padding:30px; background:#1e3a8a; color:#94a3b8;
+         font-size:.9rem; margin-top:40px; }
+.q-num { display:inline-block; background:#1e3a8a; color:#fff; border-radius:50%;
+         width:30px; height:30px; line-height:30px; text-align:center;
+         font-weight:700; font-size:.85rem; margin-right:10px; flex-shrink:0; }
+.q-item { display:flex; align-items:flex-start; margin-bottom:16px; }
+.q-text { flex:1; line-height:1.7; }
+.ans   { background:#f0fdf4; border-left:3px solid #22c55e; padding:6px 12px;
+         border-radius:4px; margin-top:6px; font-size:.9rem; color:#166534; }
+.tf-true  { color:#166534; font-weight:700; }
+.tf-false { color:#991b1b; font-weight:700; }
+.opt { margin:4px 0 4px 10px; font-size:.95rem; }
+.opt.correct { color:#166534; font-weight:700; }
+.ans-multi { background:#fff7ed; border-left:3px solid #f97316; padding:6px 12px;
+         border-radius:4px; margin-top:8px; font-size:.9rem; color:#9a3412; }
+.ans-multi strong { color:#c2410c; }
+</style>
+</head>
+<body>
+<header>
+  <h1>CSE 417: Software Engineering &amp; Design Patterns</h1>
+  <p>Metropolitan University &mdash; Md. Mushtaq Shahriyar Rafee</p>
+</header>
+
+<nav>
+  <a href="index.html">🏠 Home</a>
+  <a href="lecture1.html">L1: Intro</a>
+  <a href="lecture2.html">L2: SDLC</a>
+  <a href="lecture3.html">L3: Myths & Ethics</a>
+  <a href="lecture4.html">L4: Waterfall</a>
+  <a href="lecture5.html">L5: V-Shape & Incremental</a>
+  <a href="questions.html" class="active">📝 Questions</a>
+</nav>
+
+<main>
+<h2>Practice Questions — 200 Total</h2>
+<p>Covers all 5 lectures. Answers are shown below each question.</p>
+
+<!-- ═══════════════════ TRUE / FALSE ═══════════════════ -->
+<div class="card">
+<h3>Part A: True / False (50 Questions)</h3>
+
+
+<div class="q-item">
+  <span class="q-num">1</span>
+  <div class="q-text">
+    <p>Software engineering only deals with writing code.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> Software engineering deals with ALL aspects of software production — from early specification through to maintenance — not just coding.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">2</span>
+  <div class="q-text">
+    <p>System software runs independently without depending on other software.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">3</span>
+  <div class="q-text">
+    <p>Application software depends on system software to run.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">4</span>
+  <div class="q-text">
+    <p>Android is an example of application software.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> Android is an example of SYSTEM software — it provides a platform for other apps to run.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">5</span>
+  <div class="q-text">
+    <p>MATLAB is an example of engineering/scientific software.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">6</span>
+  <div class="q-text">
+    <p>Embedded software cannot reside within hardware products.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> Embedded software DOES reside within hardware products (e.g., microwave oven controller) to implement and control their features.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">7</span>
+  <div class="q-text">
+    <p>Web applications are accessed using a web browser.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">8</span>
+  <div class="q-text">
+    <p>MS Office is an example of system software.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> MS Office is an example of APPLICATION software — it is a stand-alone program that solves a specific business need.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">9</span>
+  <div class="q-text">
+    <p>Software engineering is a sub-field of computer engineering.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">10</span>
+  <div class="q-text">
+    <p>Computer engineering deals only with software.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> Computer engineering deals with BOTH software AND hardware, including networking, processors, and databases.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">11</span>
+  <div class="q-text">
+    <p>Maintainability means the software can evolve to meet changing needs.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">12</span>
+  <div class="q-text">
+    <p>Efficiency refers to how well software uses system resources.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">13</span>
+  <div class="q-text">
+    <p>Acceptability means the software is acceptable only to developers.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> Acceptability means the software must be acceptable to the TYPE OF USERS for which it is designed — not just developers.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">14</span>
+  <div class="q-text">
+    <p>SDLC stands for Software Development Life Cycle.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">15</span>
+  <div class="q-text">
+    <p>The first phase of SDLC is testing.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> The first phase of SDLC is PLANNING & REQUIREMENT ANALYSIS — the most important and necessary stage.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">16</span>
+  <div class="q-text">
+    <p>The SRS document is created during the Defining Requirements phase.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">17</span>
+  <div class="q-text">
+    <p>Deployment happens before testing in the SDLC.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> TESTING happens before deployment. Only after testing confirms no bugs is the software deployed.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">18</span>
+  <div class="q-text">
+    <p>Maintenance is the shortest phase of SDLC.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> Maintenance is the LONGEST phase of SDLC — it covers the entire operational life of the software.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">19</span>
+  <div class="q-text">
+    <p>David Hooker proposed seven principles of software engineering.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">20</span>
+  <div class="q-text">
+    <p>The KISS principle means 'Keep It Simple, Stupid!'</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">21</span>
+  <div class="q-text">
+    <p>Planning ahead for reuse increases the cost of software components.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> Planning ahead for reuse REDUCES the cost and increases the value of both the reusable components and the systems that use them.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">22</span>
+  <div class="q-text">
+    <p>A software myth is a correct belief about software development.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> A software myth is a WRONG (incorrect) belief about software and the process used to build it.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">23</span>
+  <div class="q-text">
+    <p>Brook's Law states that adding programmers to a late project speeds it up.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> Brook's Law states: 'Adding manpower to a late software project makes it LATER' — new people need onboarding time.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">24</span>
+  <div class="q-text">
+    <p>Ambiguous requirements can lead to project disaster.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">25</span>
+  <div class="q-text">
+    <p>Software changes introduced early in development are more expensive than late ones.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> Changes introduced EARLY (before design/code) are CHEAPER. Late changes (after coding) can cost 50-100x more.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">26</span>
+  <div class="q-text">
+    <p>Maintenance accounts for 60-80% of total software lifetime cost.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">27</span>
+  <div class="q-text">
+    <p>Technical reviews can detect defects before code is executed.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">28</span>
+  <div class="q-text">
+    <p>The only deliverable in a software project is the working program.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> A working program is only ONE part. Other deliverables include plans, documents, models, and test cases.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">29</span>
+  <div class="q-text">
+    <p>Heterogeneity in software means integrating systems across different platforms.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">30</span>
+  <div class="q-text">
+    <p>A legacy system is a modern, up-to-date computing system.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> A legacy system is an OUTDATED computing system (hardware or software) that is still in use.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">31</span>
+  <div class="q-text">
+    <p>Security and trust is one of the three general issues in software engineering.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">32</span>
+  <div class="q-text">
+    <p>Software engineers must respect client confidentiality even without a signed agreement.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">33</span>
+  <div class="q-text">
+    <p>A software engineer should accept any work regardless of their competence.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> A software engineer should NOT knowingly accept work that is OUTSIDE their competence.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">34</span>
+  <div class="q-text">
+    <p>Intellectual property rights are given to persons over creations of their minds.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">35</span>
+  <div class="q-text">
+    <p>Playing games on your employer's computer is not a form of computer misuse.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> Playing games on an employer's machine IS a form of computer misuse — even if trivial, it is still misuse.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">36</span>
+  <div class="q-text">
+    <p>The Waterfall Model was the first SDLC model developed.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">37</span>
+  <div class="q-text">
+    <p>In the Waterfall Model, the next phase starts before the previous one is complete.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> In the Waterfall Model, the next phase starts ONLY AFTER the previous phase is completed and signed off.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">38</span>
+  <div class="q-text">
+    <p>The maintenance phase is the longest phase of the Waterfall Model.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">39</span>
+  <div class="q-text">
+    <p>The Waterfall Model works well for complex, large projects.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> The Waterfall Model is NOT suitable for complex and large projects — it works best for small projects with fixed requirements.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">40</span>
+  <div class="q-text">
+    <p>The Iterative Waterfall Model provides feedback paths between phases.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">41</span>
+  <div class="q-text">
+    <p>There is a feedback path from any phase back to the Feasibility Study in Iterative Waterfall.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> There is NO feedback path back to the Feasibility Study — once a project is accepted, it is not easily abandoned.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">42</span>
+  <div class="q-text">
+    <p>The Waterfall Model produces working software early in the lifecycle.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> The Waterfall Model produces NO working software until LATE in the lifecycle — only after all phases are complete.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">43</span>
+  <div class="q-text">
+    <p>The V-Shaped Model is an extension of the Waterfall Model.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">44</span>
+  <div class="q-text">
+    <p>Verification asks 'Are we building the right product?'</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> VALIDATION asks 'Are we building the right product?' — Verification asks 'Are we building the product RIGHT?' (per specifications).</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">45</span>
+  <div class="q-text">
+    <p>Validation is done by executing code dynamically.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">46</span>
+  <div class="q-text">
+    <p>In the V-Model, testing is associated with every phase of development.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">47</span>
+  <div class="q-text">
+    <p>The Incremental Model delivers software in a single final delivery.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> The Incremental Model delivers software in MULTIPLE increments — each increment adds new functionality.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">48</span>
+  <div class="q-text">
+    <p>In the Incremental Model, the first increment is often a core product.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">49</span>
+  <div class="q-text">
+    <p>The Incremental Model has maximum customer interaction throughout development.</p>
+    <div class="ans">Answer: <span class="tf-true">TRUE</span></div>
+    
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">50</span>
+  <div class="q-text">
+    <p>The V-Shaped Model is highly flexible and easy to change.</p>
+    <div class="ans">Answer: <span class="tf-false">FALSE</span></div>
+    <div class="ans" style="margin-top:5px;"><strong>✔ Correct Statement:</strong> The V-Shaped Model is VERY RIGID and LEAST FLEXIBLE — any requirement change forces updates to all test documents.</div>
+  </div>
+</div>
+</div>
+
+<div class="card">
+<h3>Part B: Multiple Choice Questions — Single Answer (50 Questions)</h3>
+
+<div class="q-item">
+  <span class="q-num">1</span>
+  <div class="q-text">
+    <p><strong>What is software engineering?</strong></p>
+    <p class="opt">A) Only writing source code</p><p class="opt">B) An engineering discipline concerned with all aspects of software production</p><p class="opt">C) A hardware design discipline</p><p class="opt">D) A database management technique</p>
+    <div class="ans">✔ Answer: B) An engineering discipline concerned with all aspects of software production</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">2</span>
+  <div class="q-text">
+    <p><strong>Which of the following is a system software?</strong></p>
+    <p class="opt">A) Microsoft Word</p><p class="opt">B) Adobe Photoshop</p><p class="opt">C) Linux Operating System</p><p class="opt">D) VLC Media Player</p>
+    <div class="ans">✔ Answer: C) Linux Operating System</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">3</span>
+  <div class="q-text">
+    <p><strong>What does SRS stand for?</strong></p>
+    <p class="opt">A) System Resource Summary</p><p class="opt">B) Software Requirement Specification</p><p class="opt">C) Software Release Schedule</p><p class="opt">D) System Review Sheet</p>
+    <div class="ans">✔ Answer: B) Software Requirement Specification</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">4</span>
+  <div class="q-text">
+    <p><strong>Which software category does MATLAB belong to?</strong></p>
+    <p class="opt">A) Embedded software</p><p class="opt">B) Web application</p><p class="opt">C) Engineering/Scientific software</p><p class="opt">D) Business software</p>
+    <div class="ans">✔ Answer: C) Engineering/Scientific software</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">5</span>
+  <div class="q-text">
+    <p><strong>What is a legacy system?</strong></p>
+    <p class="opt">A) A brand new software system</p><p class="opt">B) An outdated computing system still in use</p><p class="opt">C) A cloud-based modern system</p><p class="opt">D) A type of embedded system</p>
+    <div class="ans">✔ Answer: B) An outdated computing system still in use</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">6</span>
+  <div class="q-text">
+    <p><strong>What is the primary purpose of a feasibility study?</strong></p>
+    <p class="opt">A) To write code</p><p class="opt">B) To assess the practicality and viability of a proposed project</p><p class="opt">C) To conduct system testing</p><p class="opt">D) To deploy the software</p>
+    <div class="ans">✔ Answer: B) To assess the practicality and viability of a proposed project</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">7</span>
+  <div class="q-text">
+    <p><strong>Which of the following is NOT an essential attribute of good software?</strong></p>
+    <p class="opt">A) Maintainability</p><p class="opt">B) Dependability</p><p class="opt">C) Complexity</p><p class="opt">D) Efficiency</p>
+    <div class="ans">✔ Answer: C) Complexity</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">8</span>
+  <div class="q-text">
+    <p><strong>The KISS principle in software engineering stands for:</strong></p>
+    <p class="opt">A) Keep It Stable and Secure</p><p class="opt">B) Keep It Simple, Stupid</p><p class="opt">C) Kill Inactive Software Systems</p><p class="opt">D) Knowledge Integration and Skill Sharing</p>
+    <div class="ans">✔ Answer: B) Keep It Simple, Stupid</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">9</span>
+  <div class="q-text">
+    <p><strong>David Hooker proposed how many principles of software engineering?</strong></p>
+    <p class="opt">A) 5</p><p class="opt">B) 6</p><p class="opt">C) 7</p><p class="opt">D) 8</p>
+    <div class="ans">✔ Answer: C) 7</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">10</span>
+  <div class="q-text">
+    <p><strong>Which phase of SDLC involves creating the SRS document?</strong></p>
+    <p class="opt">A) Planning</p><p class="opt">B) Defining Requirements</p><p class="opt">C) Testing</p><p class="opt">D) Deployment</p>
+    <div class="ans">✔ Answer: B) Defining Requirements</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">11</span>
+  <div class="q-text">
+    <p><strong>In the Waterfall Model, what is the first phase?</strong></p>
+    <p class="opt">A) System Design</p><p class="opt">B) Coding</p><p class="opt">C) Feasibility Study</p><p class="opt">D) Testing</p>
+    <div class="ans">✔ Answer: C) Feasibility Study</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">12</span>
+  <div class="q-text">
+    <p><strong>What is the key characteristic that distinguishes the Iterative Waterfall from the Classic Waterfall?</strong></p>
+    <p class="opt">A) No testing phase</p><p class="opt">B) Feedback paths from each phase to the preceding one</p><p class="opt">C) Incremental deliveries</p><p class="opt">D) Customer involvement throughout</p>
+    <div class="ans">✔ Answer: B) Feedback paths from each phase to the preceding one</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">13</span>
+  <div class="q-text">
+    <p><strong>Which model has feedback paths from every phase to its preceding phases?</strong></p>
+    <p class="opt">A) Classic Waterfall</p><p class="opt">B) V-Shaped Model</p><p class="opt">C) Iterative Waterfall Model</p><p class="opt">D) Incremental Model</p>
+    <div class="ans">✔ Answer: C) Iterative Waterfall Model</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">14</span>
+  <div class="q-text">
+    <p><strong>The V-Shaped Model is also known as:</strong></p>
+    <p class="opt">A) The Spiral Model</p><p class="opt">B) Verification and Validation Model</p><p class="opt">C) Agile Model</p><p class="opt">D) RAD Model</p>
+    <div class="ans">✔ Answer: B) Verification and Validation Model</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">15</span>
+  <div class="q-text">
+    <p><strong>In the V-Shaped Model, which testing type corresponds to Requirements Analysis?</strong></p>
+    <p class="opt">A) Unit Testing</p><p class="opt">B) Integration Testing</p><p class="opt">C) System Testing</p><p class="opt">D) Acceptance Testing</p>
+    <div class="ans">✔ Answer: D) Acceptance Testing</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">16</span>
+  <div class="q-text">
+    <p><strong>Verification in software engineering is:</strong></p>
+    <p class="opt">A) Checking if the software meets client needs</p><p class="opt">B) Determining if software is built as per specifications</p><p class="opt">C) Running the software dynamically</p><p class="opt">D) None of the above</p>
+    <div class="ans">✔ Answer: B) Determining if software is built as per specifications</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">17</span>
+  <div class="q-text">
+    <p><strong>Which of the following is a static analysis method?</strong></p>
+    <p class="opt">A) System Testing</p><p class="opt">B) Code Review / Inspection</p><p class="opt">C) Acceptance Testing</p><p class="opt">D) Unit Testing</p>
+    <div class="ans">✔ Answer: B) Code Review / Inspection</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">18</span>
+  <div class="q-text">
+    <p><strong>In the Incremental Model, what is usually the first increment?</strong></p>
+    <p class="opt">A) The most complex module</p><p class="opt">B) A core product with basic functionality</p><p class="opt">C) The complete product</p><p class="opt">D) The user interface only</p>
+    <div class="ans">✔ Answer: B) A core product with basic functionality</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">19</span>
+  <div class="q-text">
+    <p><strong>Which model is best suited for a project with a lengthy development schedule and quick delivery needs?</strong></p>
+    <p class="opt">A) Waterfall</p><p class="opt">B) Classic Waterfall</p><p class="opt">C) V-Shaped</p><p class="opt">D) Incremental</p>
+    <div class="ans">✔ Answer: D) Incremental</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">20</span>
+  <div class="q-text">
+    <p><strong>What is Brook's Law?</strong></p>
+    <p class="opt">A) More programmers always speed up a project</p><p class="opt">B) Adding manpower to a late project makes it later</p><p class="opt">C) Software quality improves with team size</p><p class="opt">D) Testing should begin from day one</p>
+    <div class="ans">✔ Answer: B) Adding manpower to a late project makes it later</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">21</span>
+  <div class="q-text">
+    <p><strong>Which issue involves integrating new software with old systems in different languages?</strong></p>
+    <p class="opt">A) Security and Trust</p><p class="opt">B) Business Change</p><p class="opt">C) Heterogeneity</p><p class="opt">D) Scalability</p>
+    <div class="ans">✔ Answer: C) Heterogeneity</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">22</span>
+  <div class="q-text">
+    <p><strong>Which ethical principle says you should not misrepresent your competence?</strong></p>
+    <p class="opt">A) Confidentiality</p><p class="opt">B) Intellectual Property Rights</p><p class="opt">C) Competence</p><p class="opt">D) Computer Misuse</p>
+    <div class="ans">✔ Answer: C) Competence</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">23</span>
+  <div class="q-text">
+    <p><strong>What is the output of the Requirements Analysis phase in the Waterfall Model?</strong></p>
+    <p class="opt">A) Source code</p><p class="opt">B) System Specification document</p><p class="opt">C) Test cases</p><p class="opt">D) Deployed software</p>
+    <div class="ans">✔ Answer: B) System Specification document</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">24</span>
+  <div class="q-text">
+    <p><strong>Which model has the maximum customer interaction?</strong></p>
+    <p class="opt">A) Waterfall</p><p class="opt">B) Iterative Waterfall</p><p class="opt">C) V-Shaped</p><p class="opt">D) Incremental</p>
+    <div class="ans">✔ Answer: D) Incremental</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">25</span>
+  <div class="q-text">
+    <p><strong>What does IPR stand for?</strong></p>
+    <p class="opt">A) Integrated Process Review</p><p class="opt">B) Intellectual Property Rights</p><p class="opt">C) Internal Project Report</p><p class="opt">D) Interface Protocol Reference</p>
+    <div class="ans">✔ Answer: B) Intellectual Property Rights</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">26</span>
+  <div class="q-text">
+    <p><strong>In the V-Shaped Model, which phase is at the very bottom of the V?</strong></p>
+    <p class="opt">A) Requirements Analysis</p><p class="opt">B) System Design</p><p class="opt">C) Module Design</p><p class="opt">D) Implementation/Coding</p>
+    <div class="ans">✔ Answer: D) Implementation/Coding</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">27</span>
+  <div class="q-text">
+    <p><strong>Which of the following is an advantage of the Waterfall Model?</strong></p>
+    <p class="opt">A) Flexible to change requirements</p><p class="opt">B) Working software is delivered early</p><p class="opt">C) Release date can be determined before development</p><p class="opt">D) Maximum customer interaction</p>
+    <div class="ans">✔ Answer: C) Release date can be determined before development</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">28</span>
+  <div class="q-text">
+    <p><strong>Which phase of SDLC is described as 'the longest lifecycle phase'?</strong></p>
+    <p class="opt">A) Planning</p><p class="opt">B) Testing</p><p class="opt">C) Deployment</p><p class="opt">D) Maintenance and Operation</p>
+    <div class="ans">✔ Answer: D) Maintenance and Operation</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">29</span>
+  <div class="q-text">
+    <p><strong>Embedded software is typically found in:</strong></p>
+    <p class="opt">A) Web browsers</p><p class="opt">B) Microwave ovens and washing machines</p><p class="opt">C) Cloud servers</p><p class="opt">D) Desktop applications</p>
+    <div class="ans">✔ Answer: B) Microwave ovens and washing machines</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">30</span>
+  <div class="q-text">
+    <p><strong>What is the purpose of Unit Testing in software development?</strong></p>
+    <p class="opt">A) To test the complete integrated system</p><p class="opt">B) To verify each individual module works correctly</p><p class="opt">C) To check if requirements are met by the client</p><p class="opt">D) To test network connectivity</p>
+    <div class="ans">✔ Answer: B) To verify each individual module works correctly</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">31</span>
+  <div class="q-text">
+    <p><strong>Which of the following best describes the Incremental Model?</strong></p>
+    <p class="opt">A) Software delivered in one batch after all coding is done</p><p class="opt">B) Requirements divided into modules, each built and delivered separately</p><p class="opt">C) Only testing is done incrementally</p><p class="opt">D) Documentation is produced incrementally</p>
+    <div class="ans">✔ Answer: B) Requirements divided into modules, each built and delivered separately</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">32</span>
+  <div class="q-text">
+    <p><strong>What type of software is Google Chrome?</strong></p>
+    <p class="opt">A) System software</p><p class="opt">B) Embedded software</p><p class="opt">C) Web application</p><p class="opt">D) Application software</p>
+    <div class="ans">✔ Answer: D) Application software</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">33</span>
+  <div class="q-text">
+    <p><strong>Which principle states 'always design knowing someone else will need to understand your work'?</strong></p>
+    <p class="opt">A) Keep It Simple</p><p class="opt">B) Maintain the Vision</p><p class="opt">C) What You Produce Others Will Consume</p><p class="opt">D) Plan Ahead for Reuse</p>
+    <div class="ans">✔ Answer: C) What You Produce Others Will Consume</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">34</span>
+  <div class="q-text">
+    <p><strong>What does the 'Think!' principle by Hooker emphasize?</strong></p>
+    <p class="opt">A) Use AI for coding</p><p class="opt">B) Place clear, complete thought before action</p><p class="opt">C) Think about marketing</p><p class="opt">D) Think about team size</p>
+    <div class="ans">✔ Answer: B) Place clear, complete thought before action</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">35</span>
+  <div class="q-text">
+    <p><strong>Which software attribute ensures it works correctly and doesn't cause damage in case of failure?</strong></p>
+    <p class="opt">A) Efficiency</p><p class="opt">B) Acceptability</p><p class="opt">C) Dependability and Security</p><p class="opt">D) Maintainability</p>
+    <div class="ans">✔ Answer: C) Dependability and Security</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">36</span>
+  <div class="q-text">
+    <p><strong>In Iterative Waterfall, why is there no feedback path to the Feasibility Study?</strong></p>
+    <p class="opt">A) It is too expensive</p><p class="opt">B) Once a project is accepted, it is not easily abandoned</p><p class="opt">C) The study is optional</p><p class="opt">D) There is no such rule</p>
+    <div class="ans">✔ Answer: B) Once a project is accepted, it is not easily abandoned</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">37</span>
+  <div class="q-text">
+    <p><strong>What is validation testing concerned with?</strong></p>
+    <p class="opt">A) Internal code structure</p><p class="opt">B) Whether specifications are followed</p><p class="opt">C) Whether the software meets the client's actual needs</p><p class="opt">D) Memory management</p>
+    <div class="ans">✔ Answer: C) Whether the software meets the client's actual needs</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">38</span>
+  <div class="q-text">
+    <p><strong>An online store cart, video editing web app, and form submission are examples of:</strong></p>
+    <p class="opt">A) Embedded software</p><p class="opt">B) System software</p><p class="opt">C) Web applications</p><p class="opt">D) Engineering software</p>
+    <div class="ans">✔ Answer: C) Web applications</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">39</span>
+  <div class="q-text">
+    <p><strong>Which SDLC phase involves actual coding by developers?</strong></p>
+    <p class="opt">A) Planning</p><p class="opt">B) Requirement Analysis</p><p class="opt">C) Developing the Software</p><p class="opt">D) Deployment</p>
+    <div class="ans">✔ Answer: C) Developing the Software</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">40</span>
+  <div class="q-text">
+    <p><strong>The Waterfall Model is NOT suitable for projects that:</strong></p>
+    <p class="opt">A) Have well-defined requirements</p><p class="opt">B) Are short in duration</p><p class="opt">C) Have complex and changing requirements</p><p class="opt">D) Use stable technology</p>
+    <div class="ans">✔ Answer: C) Have complex and changing requirements</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">41</span>
+  <div class="q-text">
+    <p><strong>In V-Shaped Model, Architecture Design corresponds to which testing type?</strong></p>
+    <p class="opt">A) Unit Testing</p><p class="opt">B) Integration Testing</p><p class="opt">C) System Testing</p><p class="opt">D) Acceptance Testing</p>
+    <div class="ans">✔ Answer: B) Integration Testing</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">42</span>
+  <div class="q-text">
+    <p><strong>Which principle says 'build software so code and design can be reused'?</strong></p>
+    <p class="opt">A) First principle</p><p class="opt">B) KISS</p><p class="opt">C) Plan Ahead for Reuse</p><p class="opt">D) Maintain the Vision</p>
+    <div class="ans">✔ Answer: C) Plan Ahead for Reuse</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">43</span>
+  <div class="q-text">
+    <p><strong>Which is the most widely used category of software?</strong></p>
+    <p class="opt">A) System software</p><p class="opt">B) Embedded software</p><p class="opt">C) Engineering software</p><p class="opt">D) Business/Product-line software</p>
+    <div class="ans">✔ Answer: D) Business/Product-line software</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">44</span>
+  <div class="q-text">
+    <p><strong>Software myths are:</strong></p>
+    <p class="opt">A) Correct beliefs about software</p><p class="opt">B) Wrong beliefs about software and its development</p><p class="opt">C) Documented best practices</p><p class="opt">D) Official standards</p>
+    <div class="ans">✔ Answer: B) Wrong beliefs about software and its development</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">45</span>
+  <div class="q-text">
+    <p><strong>Low-level languages are used in:</strong></p>
+    <p class="opt">A) Application software</p><p class="opt">B) Web applications</p><p class="opt">C) System software</p><p class="opt">D) AI software</p>
+    <div class="ans">✔ Answer: C) System software</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">46</span>
+  <div class="q-text">
+    <p><strong>Which model assumes phases may not overlap and requires one phase to fully complete before next begins?</strong></p>
+    <p class="opt">A) Incremental Model</p><p class="opt">B) Agile Model</p><p class="opt">C) Waterfall Model</p><p class="opt">D) Spiral Model</p>
+    <div class="ans">✔ Answer: C) Waterfall Model</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">47</span>
+  <div class="q-text">
+    <p><strong>What does a Business Analyst do in the Planning phase of SDLC?</strong></p>
+    <p class="opt">A) Write code</p><p class="opt">B) Deploy software</p><p class="opt">C) Meet with client and gather requirements</p><p class="opt">D) Conduct unit testing</p>
+    <div class="ans">✔ Answer: C) Meet with client and gather requirements</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">48</span>
+  <div class="q-text">
+    <p><strong>Which testing is done 'just before product release' in the V-Shaped Model?</strong></p>
+    <p class="opt">A) Unit Testing</p><p class="opt">B) Integration Testing</p><p class="opt">C) System Testing</p><p class="opt">D) Acceptance Testing</p>
+    <div class="ans">✔ Answer: C) System Testing</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">49</span>
+  <div class="q-text">
+    <p><strong>Which attribute ensures software is not wasteful of memory and processing time?</strong></p>
+    <p class="opt">A) Maintainability</p><p class="opt">B) Security</p><p class="opt">C) Efficiency</p><p class="opt">D) Acceptability</p>
+    <div class="ans">✔ Answer: C) Efficiency</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">50</span>
+  <div class="q-text">
+    <p><strong>What is a major disadvantage of both Classic and Iterative Waterfall Models?</strong></p>
+    <p class="opt">A) Too much customer interaction</p><p class="opt">B) No feedback paths</p><p class="opt">C) Working software not produced until very late</p><p class="opt">D) Too many testing phases</p>
+    <div class="ans">✔ Answer: C) Working software not produced until very late</div>
+  </div>
+</div>
+</div>
+
+<div class="card">
+<h3>Part C: Short Questions (50 Questions)</h3>
+
+<div class="q-item">
+  <span class="q-num">1</span>
+  <div class="q-text">
+    <p><strong>Define Software Engineering.</strong></p>
+    <div class="ans">Software Engineering is an engineering discipline concerned with all aspects of software production — from early-stage system specification through to maintaining the system after it has gone into use.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">2</span>
+  <div class="q-text">
+    <p><strong>What is the difference between software and engineering?</strong></p>
+    <div class="ans">Software is a collection of programs that accomplish tasks. Engineering is the application of scientific and practical knowledge to design and build solutions. Software Engineering combines both.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">3</span>
+  <div class="q-text">
+    <p><strong>List and briefly describe the seven categories of software application domains.</strong></p>
+    <div class="ans">1) System Software (OS), 2) Application Software (specific user tasks), 3) Engineering/Scientific Software (MATLAB), 4) Embedded Software (device controllers), 5) Web Applications (browser-accessed), 6) Business Software (ERP, banking), 7) AI Software (robotics, neural networks).</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">4</span>
+  <div class="q-text">
+    <p><strong>What is embedded software? Give one example.</strong></p>
+    <div class="ans">Embedded software resides within a product or system and controls its features and functions. Example: The control software inside a microwave oven's keypad.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">5</span>
+  <div class="q-text">
+    <p><strong>Differentiate between System Software and Application Software.</strong></p>
+    <div class="ans">System software provides a platform for other software and manages hardware resources (e.g., Linux). Application software is built for specific user tasks and depends on system software (e.g., Photoshop).</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">6</span>
+  <div class="q-text">
+    <p><strong>What are the four essential attributes of good software?</strong></p>
+    <div class="ans">1) Maintainability — software can evolve with changing needs. 2) Dependability and Security — reliable, safe, and secure. 3) Efficiency — doesn't waste memory/processing. 4) Acceptability — usable and understandable by target users.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">7</span>
+  <div class="q-text">
+    <p><strong>What is Maintainability in software?</strong></p>
+    <div class="ans">Maintainability means the software is written in such a way that it can evolve to meet the changing needs of customers without excessive effort or risk.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">8</span>
+  <div class="q-text">
+    <p><strong>Define SDLC and explain why it is needed.</strong></p>
+    <div class="ans">SDLC (Software Development Life Cycle) is a structured process for developing software systematically. It is needed to ensure all team members follow the same process, prevent chaos, and deliver quality software on time.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">9</span>
+  <div class="q-text">
+    <p><strong>List all 7 phases of SDLC.</strong></p>
+    <div class="ans">1) Planning & Requirement Analysis, 2) Defining Requirements (SRS), 3) Designing the Software, 4) Developing the Software, 5) Testing, 6) Deployment, 7) Maintenance.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">10</span>
+  <div class="q-text">
+    <p><strong>What is an SRS document?</strong></p>
+    <div class="ans">An SRS (Software Requirement Specification) document contains all product requirements to be constructed and developed during the project lifecycle. It serves as a contract between client and developer.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">11</span>
+  <div class="q-text">
+    <p><strong>What is a Feasibility Study?</strong></p>
+    <div class="ans">A Feasibility Study is an assessment of the practicality of a proposed project. It helps decision-makers determine whether the project is likely to be successful before resources are committed.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">12</span>
+  <div class="q-text">
+    <p><strong>State the 7 principles of Software Engineering by David Hooker.</strong></p>
+    <div class="ans">1) The Reason It All Exists, 2) KISS, 3) Maintain the Vision, 4) What You Produce Others Will Consume, 5) Be Open to the Future, 6) Plan Ahead for Reuse, 7) Think!</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">13</span>
+  <div class="q-text">
+    <p><strong>Explain the KISS principle.</strong></p>
+    <div class="ans">KISS stands for 'Keep It Simple, Stupid!' All design should be as simple as possible. Simpler systems are easier to understand, test, maintain, and extend over time.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">14</span>
+  <div class="q-text">
+    <p><strong>What does 'Plan Ahead for Reuse' mean?</strong></p>
+    <div class="ans">Build software so that code and design components can be reused in other projects. This reduces cost and increases value, as the same component doesn't need to be rebuilt from scratch.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">15</span>
+  <div class="q-text">
+    <p><strong>What is a Software Myth?</strong></p>
+    <div class="ans">A software myth is a wrong belief about software and the process used to build it. Myths lead to poor management decisions and project failures.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">16</span>
+  <div class="q-text">
+    <p><strong>Explain Brook's Law.</strong></p>
+    <div class="ans">Brook's Law states: 'Adding manpower to a late software project makes it later.' New team members need time to onboard, and senior developers must train them instead of coding.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">17</span>
+  <div class="q-text">
+    <p><strong>What is the impact of late requirement changes?</strong></p>
+    <div class="ans">Requirements changes have greater cost impact when introduced late in development. Early changes (before design/code) cost little; changes after coding/testing can cost 50-100x more.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">18</span>
+  <div class="q-text">
+    <p><strong>What is a Technical Review?</strong></p>
+    <div class="ans">A technical review is a quality assurance mechanism applied from the inception of a project to detect defects early through inspection of code, design, or requirements — without executing the code.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">19</span>
+  <div class="q-text">
+    <p><strong>What are the three General Issues in Software Engineering?</strong></p>
+    <div class="ans">1) Heterogeneity — operating across different platforms and legacy systems. 2) Business & Social Change — need to rapidly evolve software. 3) Security & Trust — protecting software from malicious attacks.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">20</span>
+  <div class="q-text">
+    <p><strong>What is a Legacy System?</strong></p>
+    <div class="ans">A legacy system is any outdated computing system (hardware or software) that is still in use despite being technologically obsolete. It poses integration challenges for new software.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">21</span>
+  <div class="q-text">
+    <p><strong>List the four ethical responsibilities of a Software Engineer.</strong></p>
+    <div class="ans">1) Confidentiality — respect client/employer secrets. 2) Competence — don't misrepresent skills. 3) Intellectual Property Rights — respect legal protections. 4) Computer Misuse — don't misuse technical access.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">22</span>
+  <div class="q-text">
+    <p><strong>What is Computer Misuse in software ethics?</strong></p>
+    <div class="ans">Computer misuse means using technical skills to harm or access other people's computers without authorization. It ranges from trivial acts (games on employer's machine) to serious crimes (spreading malware).</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">23</span>
+  <div class="q-text">
+    <p><strong>Define Intellectual Property Rights (IPR).</strong></p>
+    <div class="ans">IPR are the rights given to persons over the creations of their minds. In software, this includes patents and copyright over code, algorithms, and designs.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">24</span>
+  <div class="q-text">
+    <p><strong>What is the Waterfall Model?</strong></p>
+    <div class="ans">The Waterfall Model is the first SDLC model, following a strictly sequential process where the output of one phase becomes the input for the next, and no phase begins until the previous one is completed.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">25</span>
+  <div class="q-text">
+    <p><strong>List the phases of the Waterfall Model.</strong></p>
+    <div class="ans">1) Feasibility Study, 2) Requirements Analysis & Specification, 3) System & Software Design, 4) Coding & Unit Testing, 5) Integration & System Testing, 6) Maintenance & Operation.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">26</span>
+  <div class="q-text">
+    <p><strong>When should the Waterfall Model NOT be used?</strong></p>
+    <div class="ans">Waterfall should not be used for complex projects, projects with ambiguous or frequently changing requirements, or projects where early working software is needed.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">27</span>
+  <div class="q-text">
+    <p><strong>State two advantages and two disadvantages of the Waterfall Model.</strong></p>
+    <div class="ans">Advantages: Simple to use; release date and cost can be determined before development. Disadvantages: Cannot accommodate requirement changes; no working software produced until late.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">28</span>
+  <div class="q-text">
+    <p><strong>What is the Iterative Waterfall Model?</strong></p>
+    <div class="ans">The Iterative Waterfall Model is an improved version of the Classic Waterfall Model that provides feedback paths from every phase back to its preceding phase, allowing error correction.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">29</span>
+  <div class="q-text">
+    <p><strong>Why is there no feedback path to the Feasibility Study in Iterative Waterfall?</strong></p>
+    <div class="ans">Because once a project has been accepted and started, organizations do not easily abandon it. Therefore, there is no mechanism to return to the feasibility stage.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">30</span>
+  <div class="q-text">
+    <p><strong>What is the major disadvantage of Iterative Waterfall?</strong></p>
+    <div class="ans">All requirements must be clear before development starts. After development begins, no changes can be incorporated. Also, there is no incremental delivery — customers must wait for the full product.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">31</span>
+  <div class="q-text">
+    <p><strong>What is the V-Shaped Model?</strong></p>
+    <div class="ans">The V-Shaped Model (Verification & Validation Model) is an extension of Waterfall where each development phase has a corresponding testing phase planned in parallel, forming a V shape.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">32</span>
+  <div class="q-text">
+    <p><strong>Differentiate between Verification and Validation.</strong></p>
+    <div class="ans">Verification: Checking if software is built as per specifications (static, no code execution). Validation: Checking if software meets client's actual needs (dynamic, code is executed).</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">33</span>
+  <div class="q-text">
+    <p><strong>What are the four development phases on the left side of the V-Model?</strong></p>
+    <div class="ans">1) Requirements Analysis, 2) System Design, 3) Architecture Design, 4) Module Design. (Bottom: Implementation)</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">34</span>
+  <div class="q-text">
+    <p><strong>What are the four testing phases on the right side of the V-Model?</strong></p>
+    <div class="ans">1) Unit Testing, 2) Integration Testing, 3) System Testing, 4) Acceptance Testing.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">35</span>
+  <div class="q-text">
+    <p><strong>What testing corresponds to Architecture Design in the V-Model?</strong></p>
+    <div class="ans">Integration Testing. The integration test plan is designed during the architecture design phase.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">36</span>
+  <div class="q-text">
+    <p><strong>What testing corresponds to Requirements Analysis in the V-Model?</strong></p>
+    <div class="ans">Acceptance Testing. The acceptance test plan is designed during requirements analysis.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">37</span>
+  <div class="q-text">
+    <p><strong>State two advantages of the V-Shaped Model over the Waterfall Model.</strong></p>
+    <div class="ans">1) Testing is planned in parallel with every development phase — defects found earlier. 2) Higher chance of success since testing planning happens well before coding.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">38</span>
+  <div class="q-text">
+    <p><strong>What is the main disadvantage of the V-Shaped Model?</strong></p>
+    <div class="ans">It is very rigid and least flexible. If requirements change mid-development, all test documents and requirement documents must also be updated, which is costly.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">39</span>
+  <div class="q-text">
+    <p><strong>Describe the Incremental Model in simple terms.</strong></p>
+    <div class="ans">The Incremental Model divides the software into standalone modules and delivers them one at a time. Each delivered increment adds new functionality, and customers can use the product early.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">40</span>
+  <div class="q-text">
+    <p><strong>What is typically the 'first increment' in the Incremental Model?</strong></p>
+    <div class="ans">The first increment is usually a core product containing the most basic and essential functionality that the customer can use while additional features are being built.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">41</span>
+  <div class="q-text">
+    <p><strong>State three advantages of the Incremental Model.</strong></p>
+    <div class="ans">1) Errors are easy to recognize. 2) Tolerates changing requirements. 3) Client gets important functionality early without waiting for the complete product.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">42</span>
+  <div class="q-text">
+    <p><strong>State three disadvantages of the Incremental Model.</strong></p>
+    <div class="ans">1) Needs good planning to divide work into increments. 2) Actual cost may exceed estimated cost. 3) A problem in one unit needs correction across all related units.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">43</span>
+  <div class="q-text">
+    <p><strong>When is the Incremental Model most appropriate?</strong></p>
+    <div class="ans">When the project has a lengthy development schedule, when quick delivery is demanded by the customer, when the team is less skilled, or when high-priority requirements need to be delivered first.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">44</span>
+  <div class="q-text">
+    <p><strong>Compare customer interaction in Waterfall vs Incremental Model.</strong></p>
+    <div class="ans">In Waterfall, customer interaction is only at the start (requirements) and end (delivery). In Incremental Model, customers interact throughout — providing feedback after every increment.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">45</span>
+  <div class="q-text">
+    <p><strong>What is the full form of SDLC?</strong></p>
+    <div class="ans">Software Development Life Cycle.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">46</span>
+  <div class="q-text">
+    <p><strong>What is the role of a Business Analyst in the Planning phase?</strong></p>
+    <div class="ans">The Business Analyst meets with the client to gather requirements — understanding what to build, who the end users are, and what the product's objective is.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">47</span>
+  <div class="q-text">
+    <p><strong>What does 'Be Open to the Future' mean as a software engineering principle?</strong></p>
+    <div class="ans">Systems must be designed to easily adapt to changes — specifications may change at any time and hardware platforms can become obsolete quickly. Flexible design future-proofs the software.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">48</span>
+  <div class="q-text">
+    <p><strong>Why is Maintenance the longest phase of the Waterfall Model?</strong></p>
+    <div class="ans">Because after deployment, real-world usage reveals new bugs, new user requirements emerge over time, and the system needs constant improvements and updates — this ongoing process lasts the entire life of the software.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">49</span>
+  <div class="q-text">
+    <p><strong>What is the difference between Unit Testing and Integration Testing?</strong></p>
+    <div class="ans">Unit Testing verifies each individual module works correctly in isolation. Integration Testing verifies that all the individual modules work correctly together when combined.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">50</span>
+  <div class="q-text">
+    <p><strong>What is System Testing?</strong></p>
+    <div class="ans">System Testing is testing of the complete, integrated software system to verify it meets its specified requirements. It is done just before product release.</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">51</span>
+  <div class="q-text">
+    <p><strong>Why is it important to 'Think!' before coding?</strong></p>
+    <div class="ans">Thinking through a problem before coding leads to better design, fewer mistakes, and a deeper understanding of the task. Even if thinking leads to a mistake, it becomes a valuable learning experience.</div>
+  </div>
+</div>
+</div></main>
+<main style="max-width:1100px;margin:0 auto;padding:0 20px 60px;">
+
+<div class="card">
+<h3>Part D: Multiple Choice Questions — Multiple Correct Answers (50 Questions)</h3>
+<p style="color:#9a3412;font-size:.92rem;margin-bottom:18px;">⚠ Each question has <strong>two or more correct answers</strong>. Select all that apply. Correct answers are revealed below all options.</p>
+
+<div class="q-item">
+  <span class="q-num">1</span>
+  <div class="q-text">
+    <p><strong>Which of the following are essential attributes of good software?</strong></p>
+    <p class="opt">A) Maintainability</p><p class="opt">B) Complexity</p><p class="opt">C) Dependability and Security</p><p class="opt">D) Efficiency</p>
+    <div class="ans-multi">✔ Correct Answers: A) Maintainability &nbsp;|&nbsp; C) Dependability and Security &nbsp;|&nbsp; D) Efficiency</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">2</span>
+  <div class="q-text">
+    <p><strong>Which of the following are valid software application domain categories?</strong></p>
+    <p class="opt">A) System Software</p><p class="opt">B) Quantum Software</p><p class="opt">C) Embedded Software</p><p class="opt">D) Web Applications</p>
+    <div class="ans-multi">✔ Correct Answers: A) System Software &nbsp;|&nbsp; C) Embedded Software &nbsp;|&nbsp; D) Web Applications</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">3</span>
+  <div class="q-text">
+    <p><strong>Which of the following are phases of the Waterfall Model?</strong></p>
+    <p class="opt">A) Feasibility Study</p><p class="opt">B) Sprint Planning</p><p class="opt">C) Requirements Analysis &amp; Specification</p><p class="opt">D) Coding &amp; Unit Testing</p>
+    <div class="ans-multi">✔ Correct Answers: A) Feasibility Study &nbsp;|&nbsp; C) Requirements Analysis &amp; Specification &nbsp;|&nbsp; D) Coding &amp; Unit Testing</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">4</span>
+  <div class="q-text">
+    <p><strong>Which of the following are disadvantages of the Waterfall Model?</strong></p>
+    <p class="opt">A) Requirements cannot be changed once development starts</p><p class="opt">B) No working software is produced until very late</p><p class="opt">C) Maximum customer interaction throughout</p><p class="opt">D) Not suitable for complex projects</p>
+    <div class="ans-multi">✔ Correct Answers: A) Requirements cannot be changed once development starts &nbsp;|&nbsp; B) No working software is produced until very late &nbsp;|&nbsp; D) Not suitable for complex projects</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">5</span>
+  <div class="q-text">
+    <p><strong>Which of the following are among David Hooker's 7 Software Engineering Principles?</strong></p>
+    <p class="opt">A) KISS</p><p class="opt">B) Maintain the Vision</p><p class="opt">C) Maximize Team Size</p><p class="opt">D) Plan Ahead for Reuse</p>
+    <div class="ans-multi">✔ Correct Answers: A) KISS &nbsp;|&nbsp; B) Maintain the Vision &nbsp;|&nbsp; D) Plan Ahead for Reuse</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">6</span>
+  <div class="q-text">
+    <p><strong>Which of the following are ethical responsibilities of a software engineer?</strong></p>
+    <p class="opt">A) Confidentiality</p><p class="opt">B) Competence</p><p class="opt">C) Maximizing profit at all costs</p><p class="opt">D) Intellectual Property Rights</p>
+    <div class="ans-multi">✔ Correct Answers: A) Confidentiality &nbsp;|&nbsp; B) Competence &nbsp;|&nbsp; D) Intellectual Property Rights</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">7</span>
+  <div class="q-text">
+    <p><strong>Which of the following are general issues facing software engineering today?</strong></p>
+    <p class="opt">A) Heterogeneity</p><p class="opt">B) Business and Social Change</p><p class="opt">C) Too many programming languages</p><p class="opt">D) Security and Trust</p>
+    <div class="ans-multi">✔ Correct Answers: A) Heterogeneity &nbsp;|&nbsp; B) Business and Social Change &nbsp;|&nbsp; D) Security and Trust</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">8</span>
+  <div class="q-text">
+    <p><strong>Which of the following are advantages of the Incremental Model?</strong></p>
+    <p class="opt">A) Clients get important features early</p><p class="opt">B) Can accommodate changing requirements</p><p class="opt">C) Actual cost never exceeds estimate</p><p class="opt">D) Errors are easy to identify and correct</p>
+    <div class="ans-multi">✔ Correct Answers: A) Clients get important features early &nbsp;|&nbsp; B) Can accommodate changing requirements &nbsp;|&nbsp; D) Errors are easy to identify and correct</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">9</span>
+  <div class="q-text">
+    <p><strong>Which of the following are testing types in the V-Shaped Model?</strong></p>
+    <p class="opt">A) Unit Testing</p><p class="opt">B) Load Testing</p><p class="opt">C) Integration Testing</p><p class="opt">D) Acceptance Testing</p>
+    <div class="ans-multi">✔ Correct Answers: A) Unit Testing &nbsp;|&nbsp; C) Integration Testing &nbsp;|&nbsp; D) Acceptance Testing</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">10</span>
+  <div class="q-text">
+    <p><strong>Which of the following correctly describe Verification in software engineering?</strong></p>
+    <p class="opt">A) It does not require code execution</p><p class="opt">B) It checks if software is built as per specifications</p><p class="opt">C) It checks if the end user requirements are met</p><p class="opt">D) It is a static analysis activity</p>
+    <div class="ans-multi">✔ Correct Answers: A) It does not require code execution &nbsp;|&nbsp; B) It checks if software is built as per specifications &nbsp;|&nbsp; D) It is a static analysis activity</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">11</span>
+  <div class="q-text">
+    <p><strong>Which of the following are phases of the SDLC?</strong></p>
+    <p class="opt">A) Planning &amp; Requirement Analysis</p><p class="opt">B) Designing the Software</p><p class="opt">C) Market Research</p><p class="opt">D) Testing</p>
+    <div class="ans-multi">✔ Correct Answers: A) Planning &amp; Requirement Analysis &nbsp;|&nbsp; B) Designing the Software &nbsp;|&nbsp; D) Testing</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">12</span>
+  <div class="q-text">
+    <p><strong>Which of the following are advantages of the V-Shaped Model over Waterfall?</strong></p>
+    <p class="opt">A) Testing is planned in parallel with development</p><p class="opt">B) Higher chance of success due to early test planning</p><p class="opt">C) Can accommodate requirement changes easily</p><p class="opt">D) Defects are found earlier</p>
+    <div class="ans-multi">✔ Correct Answers: A) Testing is planned in parallel with development &nbsp;|&nbsp; B) Higher chance of success due to early test planning &nbsp;|&nbsp; D) Defects are found earlier</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">13</span>
+  <div class="q-text">
+    <p><strong>Which of the following statements about the Iterative Waterfall Model are TRUE?</strong></p>
+    <p class="opt">A) It provides feedback paths from every phase to its preceding phase</p><p class="opt">B) There is a feedback path back to the Feasibility Study</p><p class="opt">C) It is an improvement over the Classic Waterfall Model</p><p class="opt">D) It still requires all requirements to be clear before development</p>
+    <div class="ans-multi">✔ Correct Answers: A) It provides feedback paths from every phase to its preceding phase &nbsp;|&nbsp; C) It is an improvement over the Classic Waterfall Model &nbsp;|&nbsp; D) It still requires all requirements to be clear before development</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">14</span>
+  <div class="q-text">
+    <p><strong>Which of the following are types of software?</strong></p>
+    <p class="opt">A) Engineering/Scientific Software</p><p class="opt">B) Business/Product-line Software</p><p class="opt">C) Quantum AI Software</p><p class="opt">D) AI Software</p>
+    <div class="ans-multi">✔ Correct Answers: A) Engineering/Scientific Software &nbsp;|&nbsp; B) Business/Product-line Software &nbsp;|&nbsp; D) AI Software</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">15</span>
+  <div class="q-text">
+    <p><strong>Which of the following are true about software maintenance?</strong></p>
+    <p class="opt">A) Software should evolve to meet changing requirements</p><p class="opt">B) Maintenance is the longest phase of the lifecycle</p><p class="opt">C) Maintenance only involves fixing bugs</p><p class="opt">D) New user requirements emerge during the maintenance phase</p>
+    <div class="ans-multi">✔ Correct Answers: A) Software should evolve to meet changing requirements &nbsp;|&nbsp; B) Maintenance is the longest phase of the lifecycle &nbsp;|&nbsp; D) New user requirements emerge during the maintenance phase</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">16</span>
+  <div class="q-text">
+    <p><strong>Which of the following are software myths held by practitioners?</strong></p>
+    <p class="opt">A) "Testing can handle all the mistakes"</p><p class="opt">B) "Once a program works, our job is done"</p><p class="opt">C) "Software requirements always stay the same"</p><p class="opt">D) "Changes can always easily be accommodated during development"</p>
+    <div class="ans-multi">✔ Correct Answers: A) "Testing can handle all the mistakes" &nbsp;|&nbsp; B) "Once a program works, our job is done" &nbsp;|&nbsp; D) "Changes can always easily be accommodated during development"</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">17</span>
+  <div class="q-text">
+    <p><strong>Which of the following are true about the Classic Waterfall Model?</strong></p>
+    <p class="opt">A) It follows a strictly sequential process</p><p class="opt">B) No phase begins until the previous one is completed</p><p class="opt">C) It allows easy revision of earlier phases</p><p class="opt">D) The output of one phase becomes the input of the next</p>
+    <div class="ans-multi">✔ Correct Answers: A) It follows a strictly sequential process &nbsp;|&nbsp; B) No phase begins until the previous one is completed &nbsp;|&nbsp; D) The output of one phase becomes the input of the next</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">18</span>
+  <div class="q-text">
+    <p><strong>Which of the following are disadvantages of the Incremental Model?</strong></p>
+    <p class="opt">A) Actual cost may exceed estimated cost</p><p class="opt">B) Requires good planning to divide requirements into increments</p><p class="opt">C) No customer interaction is allowed</p><p class="opt">D) A problem in one unit may require correction in related units</p>
+    <div class="ans-multi">✔ Correct Answers: A) Actual cost may exceed estimated cost &nbsp;|&nbsp; B) Requires good planning to divide requirements into increments &nbsp;|&nbsp; D) A problem in one unit may require correction in related units</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">19</span>
+  <div class="q-text">
+    <p><strong>Which of the following are true about an SRS document?</strong></p>
+    <p class="opt">A) It is created during the Defining Requirements phase</p><p class="opt">B) It serves as a contract between the client and the developer</p><p class="opt">C) It contains all product requirements to be developed</p><p class="opt">D) It is written after the software is deployed</p>
+    <div class="ans-multi">✔ Correct Answers: A) It is created during the Defining Requirements phase &nbsp;|&nbsp; B) It serves as a contract between client and developer &nbsp;|&nbsp; C) It contains all product requirements to be developed</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">20</span>
+  <div class="q-text">
+    <p><strong>Which of the following best describe the Incremental Model?</strong></p>
+    <p class="opt">A) Requirements are divided into modules</p><p class="opt">B) Each module is built, tested, and delivered separately</p><p class="opt">C) All modules are delivered at once at the end</p><p class="opt">D) Customer can use the product before all features are complete</p>
+    <div class="ans-multi">✔ Correct Answers: A) Requirements are divided into modules &nbsp;|&nbsp; B) Each module is built, tested, and delivered separately &nbsp;|&nbsp; D) Customer can use the product before all features are complete</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">21</span>
+  <div class="q-text">
+    <p><strong>Which of the following phases appear on the LEFT side of the V-Shaped Model?</strong></p>
+    <p class="opt">A) Requirements Analysis</p><p class="opt">B) System Design</p><p class="opt">C) Integration Testing</p><p class="opt">D) Architecture Design</p>
+    <div class="ans-multi">✔ Correct Answers: A) Requirements Analysis &nbsp;|&nbsp; B) System Design &nbsp;|&nbsp; D) Architecture Design</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">22</span>
+  <div class="q-text">
+    <p><strong>Which of the following are true about Validation testing?</strong></p>
+    <p class="opt">A) It involves executing the code dynamically</p><p class="opt">B) It checks if the software meets the client's actual needs</p><p class="opt">C) It checks if specifications were followed correctly</p><p class="opt">D) It is a dynamic analysis activity</p>
+    <div class="ans-multi">✔ Correct Answers: A) It involves executing the code dynamically &nbsp;|&nbsp; B) It checks if the software meets the client's actual needs &nbsp;|&nbsp; D) It is a dynamic analysis activity</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">23</span>
+  <div class="q-text">
+    <p><strong>Which of the following statements about software engineering challenges are correct?</strong></p>
+    <p class="opt">A) Heterogeneity involves integrating software on different platforms</p><p class="opt">B) Security and trust issues involve protecting software from attacks</p><p class="opt">C) Business change is irrelevant to software engineering</p><p class="opt">D) Legacy systems are outdated systems still in use</p>
+    <div class="ans-multi">✔ Correct Answers: A) Heterogeneity involves integrating software on different platforms &nbsp;|&nbsp; B) Security and trust issues involve protecting software from attacks &nbsp;|&nbsp; D) Legacy systems are outdated systems still in use</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">24</span>
+  <div class="q-text">
+    <p><strong>Which of the following correctly describe advantages of the Waterfall Model?</strong></p>
+    <p class="opt">A) Simple to understand and use</p><p class="opt">B) Release date can be estimated before development starts</p><p class="opt">C) Very flexible to requirement changes</p><p class="opt">D) Cost of development can be determined in advance</p>
+    <div class="ans-multi">✔ Correct Answers: A) Simple to understand and use &nbsp;|&nbsp; B) Release date can be estimated before development starts &nbsp;|&nbsp; D) Cost of development can be determined in advance</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">25</span>
+  <div class="q-text">
+    <p><strong>Which of the following are examples of System Software?</strong></p>
+    <p class="opt">A) Linux Operating System</p><p class="opt">B) Windows NT</p><p class="opt">C) Microsoft Word</p><p class="opt">D) Compilers and Assemblers</p>
+    <div class="ans-multi">✔ Correct Answers: A) Linux Operating System &nbsp;|&nbsp; B) Windows NT &nbsp;|&nbsp; D) Compilers and Assemblers</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">26</span>
+  <div class="q-text">
+    <p><strong>Which of the following are true about Unit Testing?</strong></p>
+    <p class="opt">A) It verifies each module works correctly in isolation</p><p class="opt">B) It corresponds to Module Design in the V-Model</p><p class="opt">C) It checks if all modules work together as a system</p><p class="opt">D) It is performed before Integration Testing</p>
+    <div class="ans-multi">✔ Correct Answers: A) It verifies each module works correctly in isolation &nbsp;|&nbsp; B) It corresponds to Module Design in the V-Model &nbsp;|&nbsp; D) It is performed before Integration Testing</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">27</span>
+  <div class="q-text">
+    <p><strong>Which of the following are true about Acceptance Testing?</strong></p>
+    <p class="opt">A) It is done by the client or end user</p><p class="opt">B) It corresponds to Requirements Analysis in the V-Model</p><p class="opt">C) It is performed before System Testing</p><p class="opt">D) It checks if the system meets the user's actual needs</p>
+    <div class="ans-multi">✔ Correct Answers: A) It is done by the client or end user &nbsp;|&nbsp; B) It corresponds to Requirements Analysis in the V-Model &nbsp;|&nbsp; D) It checks if the system meets the user's actual needs</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">28</span>
+  <div class="q-text">
+    <p><strong>Which of the following correctly characterize Embedded Software?</strong></p>
+    <p class="opt">A) It resides within hardware devices</p><p class="opt">B) It controls the features and functions of the device</p><p class="opt">C) It runs on general-purpose computers</p><p class="opt">D) Examples include washing machine controllers and car ECUs</p>
+    <div class="ans-multi">✔ Correct Answers: A) It resides within hardware devices &nbsp;|&nbsp; B) It controls the features and functions of the device &nbsp;|&nbsp; D) Examples include washing machine controllers and car ECUs</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">29</span>
+  <div class="q-text">
+    <p><strong>Which of the following are true about the Maintenance phase in SDLC?</strong></p>
+    <p class="opt">A) It is the longest phase in the software lifecycle</p><p class="opt">B) New bugs are discovered during this phase</p><p class="opt">C) No requirement changes ever occur during maintenance</p><p class="opt">D) The software needs constant updates and improvements</p>
+    <div class="ans-multi">✔ Correct Answers: A) It is the longest phase in the software lifecycle &nbsp;|&nbsp; B) New bugs are discovered during this phase &nbsp;|&nbsp; D) The software needs constant updates and improvements</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">30</span>
+  <div class="q-text">
+    <p><strong>Which of the following describe Software Engineering correctly?</strong></p>
+    <p class="opt">A) It deals with all aspects of software production</p><p class="opt">B) It includes activities from specification to system maintenance</p><p class="opt">C) It only focuses on writing code</p><p class="opt">D) It is an engineering discipline</p>
+    <div class="ans-multi">✔ Correct Answers: A) It deals with all aspects of software production &nbsp;|&nbsp; B) It includes activities from specification to system maintenance &nbsp;|&nbsp; D) It is an engineering discipline</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">31</span>
+  <div class="q-text">
+    <p><strong>Which of the following are true about phases in the Waterfall Model?</strong></p>
+    <p class="opt">A) Feasibility Study is the first phase</p><p class="opt">B) Maintenance &amp; Operation is the longest phase</p><p class="opt">C) Testing is the very first phase</p><p class="opt">D) Coding &amp; Unit Testing precedes Integration &amp; System Testing</p>
+    <div class="ans-multi">✔ Correct Answers: A) Feasibility Study is the first phase &nbsp;|&nbsp; B) Maintenance &amp; Operation is the longest phase &nbsp;|&nbsp; D) Coding &amp; Unit Testing precedes Integration &amp; System Testing</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">32</span>
+  <div class="q-text">
+    <p><strong>Which of the following are true about Intellectual Property Rights (IPR)?</strong></p>
+    <p class="opt">A) They protect rights over the creations of the mind</p><p class="opt">B) In software, they include patents and copyright</p><p class="opt">C) They allow everyone to freely copy commercial software</p><p class="opt">D) Software engineers must respect IPR as an ethical duty</p>
+    <div class="ans-multi">✔ Correct Answers: A) They protect rights over the creations of the mind &nbsp;|&nbsp; B) In software, they include patents and copyright &nbsp;|&nbsp; D) Software engineers must respect IPR as an ethical duty</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">33</span>
+  <div class="q-text">
+    <p><strong>Which of the following are true statements about Brook's Law?</strong></p>
+    <p class="opt">A) Adding manpower to a late project often makes it later</p><p class="opt">B) New team members need time for onboarding and training</p><p class="opt">C) More programmers always result in faster delivery</p><p class="opt">D) Senior developers must spend time training new members instead of coding</p>
+    <div class="ans-multi">✔ Correct Answers: A) Adding manpower to a late project often makes it later &nbsp;|&nbsp; B) New team members need time for onboarding and training &nbsp;|&nbsp; D) Senior developers must spend time training new members instead of coding</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">34</span>
+  <div class="q-text">
+    <p><strong>Which of the following are types of AI Software?</strong></p>
+    <p class="opt">A) Robotics systems</p><p class="opt">B) Neural network applications</p><p class="opt">C) Operating systems</p><p class="opt">D) Expert systems</p>
+    <div class="ans-multi">✔ Correct Answers: A) Robotics systems &nbsp;|&nbsp; B) Neural network applications &nbsp;|&nbsp; D) Expert systems</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">35</span>
+  <div class="q-text">
+    <p><strong>Which of the following correctly describe when the Incremental Model should be used?</strong></p>
+    <p class="opt">A) When the project has a lengthy development schedule</p><p class="opt">B) When the customer demands quick delivery of core features</p><p class="opt">C) When requirements are completely fixed from the beginning</p><p class="opt">D) When the development team is less experienced</p>
+    <div class="ans-multi">✔ Correct Answers: A) When the project has a lengthy development schedule &nbsp;|&nbsp; B) When the customer demands quick delivery of core features &nbsp;|&nbsp; D) When the development team is less experienced</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">36</span>
+  <div class="q-text">
+    <p><strong>Which of the following are static analysis activities in software engineering?</strong></p>
+    <p class="opt">A) Code Reviews</p><p class="opt">B) Inspections</p><p class="opt">C) System Testing</p><p class="opt">D) Walkthroughs</p>
+    <div class="ans-multi">✔ Correct Answers: A) Code Reviews &nbsp;|&nbsp; B) Inspections &nbsp;|&nbsp; D) Walkthroughs</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">37</span>
+  <div class="q-text">
+    <p><strong>Which of the following are true about the V-Shaped Model?</strong></p>
+    <p class="opt">A) It is an extension of the Waterfall Model</p><p class="opt">B) Each development phase has a corresponding testing phase</p><p class="opt">C) It is highly flexible and easy to change</p><p class="opt">D) Testing is planned in parallel with each development phase</p>
+    <div class="ans-multi">✔ Correct Answers: A) It is an extension of the Waterfall Model &nbsp;|&nbsp; B) Each development phase has a corresponding testing phase &nbsp;|&nbsp; D) Testing is planned in parallel with each development phase</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">38</span>
+  <div class="q-text">
+    <p><strong>Which of the following are valid Application Software examples?</strong></p>
+    <p class="opt">A) Microsoft Word</p><p class="opt">B) Adobe Photoshop</p><p class="opt">C) Linux Kernel</p><p class="opt">D) Google Chrome</p>
+    <div class="ans-multi">✔ Correct Answers: A) Microsoft Word &nbsp;|&nbsp; B) Adobe Photoshop &nbsp;|&nbsp; D) Google Chrome</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">39</span>
+  <div class="q-text">
+    <p><strong>Which of the following are examples of Web Applications?</strong></p>
+    <p class="opt">A) Online store cart</p><p class="opt">B) Video editing web app</p><p class="opt">C) Windows Operating System</p><p class="opt">D) Form submission systems</p>
+    <div class="ans-multi">✔ Correct Answers: A) Online store cart &nbsp;|&nbsp; B) Video editing web app &nbsp;|&nbsp; D) Form submission systems</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">40</span>
+  <div class="q-text">
+    <p><strong>Which of the following are true about Integration Testing?</strong></p>
+    <p class="opt">A) It verifies that all modules work correctly when combined</p><p class="opt">B) It corresponds to Architecture Design in the V-Model</p><p class="opt">C) It is performed before Unit Testing</p><p class="opt">D) It checks interactions between combined modules</p>
+    <div class="ans-multi">✔ Correct Answers: A) It verifies that all modules work correctly when combined &nbsp;|&nbsp; B) It corresponds to Architecture Design in the V-Model &nbsp;|&nbsp; D) It checks interactions between combined modules</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">41</span>
+  <div class="q-text">
+    <p><strong>Which of the following correctly describe the Feasibility Study phase?</strong></p>
+    <p class="opt">A) It assesses the practicality of the proposed project</p><p class="opt">B) It helps determine if the project should proceed</p><p class="opt">C) It involves writing the actual source code</p><p class="opt">D) It is the first phase of the Waterfall Model</p>
+    <div class="ans-multi">✔ Correct Answers: A) It assesses the practicality of the proposed project &nbsp;|&nbsp; B) It helps determine if the project should proceed &nbsp;|&nbsp; D) It is the first phase of the Waterfall Model</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">42</span>
+  <div class="q-text">
+    <p><strong>Which of the following are correct about Confidentiality as a software engineering ethics principle?</strong></p>
+    <p class="opt">A) Engineers should respect employer/client secrets</p><p class="opt">B) Confidential information should not be shared without authorization</p><p class="opt">C) Client data can be shared with third parties for profit</p><p class="opt">D) This principle is one of the four core ethical responsibilities</p>
+    <div class="ans-multi">✔ Correct Answers: A) Engineers should respect employer/client secrets &nbsp;|&nbsp; B) Confidential information should not be shared without authorization &nbsp;|&nbsp; D) This principle is one of the four core ethical responsibilities</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">43</span>
+  <div class="q-text">
+    <p><strong>Which of the following are true about System Testing?</strong></p>
+    <p class="opt">A) It tests the complete integrated system</p><p class="opt">B) It verifies the system meets its specified requirements</p><p class="opt">C) It corresponds to Module Design in the V-Model</p><p class="opt">D) It is done just before product release</p>
+    <div class="ans-multi">✔ Correct Answers: A) It tests the complete integrated system &nbsp;|&nbsp; B) It verifies the system meets its specified requirements &nbsp;|&nbsp; D) It is done just before product release</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">44</span>
+  <div class="q-text">
+    <p><strong>Which of the following are limitations of the Classic Waterfall Model?</strong></p>
+    <p class="opt">A) Requirements cannot be revisited once defined</p><p class="opt">B) No working software is delivered until very late</p><p class="opt">C) Too much customer interaction during development</p><p class="opt">D) Not suitable for projects with unclear requirements</p>
+    <div class="ans-multi">✔ Correct Answers: A) Requirements cannot be revisited once defined &nbsp;|&nbsp; B) No working software is delivered until very late &nbsp;|&nbsp; D) Not suitable for projects with unclear requirements</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">45</span>
+  <div class="q-text">
+    <p><strong>Which of the following are true about the Competence principle in software engineering ethics?</strong></p>
+    <p class="opt">A) Engineers should not misrepresent their level of competence</p><p class="opt">B) Engineers should not knowingly accept work beyond their skill level</p><p class="opt">C) Engineers can claim any skill to win a project contract</p><p class="opt">D) It is one of the four main professional ethical responsibilities</p>
+    <div class="ans-multi">✔ Correct Answers: A) Engineers should not misrepresent their level of competence &nbsp;|&nbsp; B) Engineers should not knowingly accept work beyond their skill level &nbsp;|&nbsp; D) It is one of the four main professional ethical responsibilities</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">46</span>
+  <div class="q-text">
+    <p><strong>Which of the following correctly describe the Planning &amp; Requirements Analysis phase of SDLC?</strong></p>
+    <p class="opt">A) A Business Analyst meets with the client</p><p class="opt">B) Project quality, cost, and timeline are assessed</p><p class="opt">C) Source code is written during this phase</p><p class="opt">D) Preliminary risks are identified</p>
+    <div class="ans-multi">✔ Correct Answers: A) A Business Analyst meets with the client &nbsp;|&nbsp; B) Project quality, cost, and timeline are assessed &nbsp;|&nbsp; D) Preliminary risks are identified</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">47</span>
+  <div class="q-text">
+    <p><strong>Which of the following are true about Hooker's principle "Be Open to the Future"?</strong></p>
+    <p class="opt">A) Systems must adapt easily to future changes</p><p class="opt">B) Specifications may change at any time</p><p class="opt">C) Once designed, software should never be changed</p><p class="opt">D) Hardware platforms can become obsolete quickly</p>
+    <div class="ans-multi">✔ Correct Answers: A) Systems must adapt easily to future changes &nbsp;|&nbsp; B) Specifications may change at any time &nbsp;|&nbsp; D) Hardware platforms can become obsolete quickly</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">48</span>
+  <div class="q-text">
+    <p><strong>Which of the following are software myths held by managers?</strong></p>
+    <p class="opt">A) "A general statement of objectives is sufficient to begin coding"</p><p class="opt">B) "Requirements continually change, but that can easily be accommodated"</p><p class="opt">C) "More documentation always guarantees software quality"</p><p class="opt">D) "If we fall behind schedule, we can simply add more programmers"</p>
+    <div class="ans-multi">✔ Correct Answers: A) "A general statement of objectives is sufficient to begin coding" &nbsp;|&nbsp; B) "Requirements continually change, but that can easily be accommodated" &nbsp;|&nbsp; D) "If we fall behind schedule, we can simply add more programmers"</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">49</span>
+  <div class="q-text">
+    <p><strong>Which of the following are correct about Business/Product-line Software?</strong></p>
+    <p class="opt">A) It is the most widely used software category</p><p class="opt">B) It includes ERP and banking software</p><p class="opt">C) It uses only low-level programming languages</p><p class="opt">D) It addresses specific business needs and processes</p>
+    <div class="ans-multi">✔ Correct Answers: A) It is the most widely used software category &nbsp;|&nbsp; B) It includes ERP and banking software &nbsp;|&nbsp; D) It addresses specific business needs and processes</div>
+  </div>
+</div>
+<div class="q-item">
+  <span class="q-num">50</span>
+  <div class="q-text">
+    <p><strong>Which of the following are true about the SDLC Testing phase?</strong></p>
+    <p class="opt">A) It verifies that the developed software meets requirements</p><p class="opt">B) Testers report bugs back to developers for fixing</p><p class="opt">C) Testing only happens after deployment</p><p class="opt">D) Software is re-tested after bugs are fixed</p>
+    <div class="ans-multi">✔ Correct Answers: A) It verifies that the developed software meets requirements &nbsp;|&nbsp; B) Testers report bugs back to developers for fixing &nbsp;|&nbsp; D) Software is re-tested after bugs are fixed</div>
+  </div>
+</div>
+</div>
+</main>
+<footer>CSE 417 &mdash; Software Engineering &amp; Design Patterns &mdash; All Rights Reserved</footer>
+</body>
+</html>
