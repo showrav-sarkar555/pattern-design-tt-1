@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lecture 3 | SE Notes</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; color: #222; }
+header { background: linear-gradient(135deg,#1a237e,#283593); color: #fff; padding: 24px 40px; }
+header h1 { font-size: 2rem; }
+header p  { opacity: .85; margin-top: 6px; }
+nav { background: #1e3a8a; display: flex; flex-wrap: wrap; gap: 4px; padding: 10px 40px; }
+nav a { color: #cbd5e1; text-decoration: none; padding: 7px 14px; border-radius: 6px;
+        font-size: .9rem; transition: background .2s; }
+nav a:hover, nav a.active { background: #3b82f6; color: #fff; }
+main { max-width: 1100px; margin: 30px auto; padding: 0 20px 60px; }
+h2 { color: #1a237e; border-left: 5px solid #3b82f6; padding-left: 14px;
+     margin: 36px 0 14px; font-size: 1.55rem; }
+h3 { color: #1e3a8a; margin: 24px 0 10px; font-size: 1.2rem; }
+h4 { color: #2563eb; margin: 18px 0 8px; }
+p  { line-height: 1.8; margin-bottom: 12px; }
+ul,ol { margin: 10px 0 16px 26px; line-height: 1.9; }
+.card { background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.08);
+        padding: 28px 32px; margin-bottom: 28px; }
+.example { background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 8px;
+           padding: 16px 20px; margin: 14px 0; }
+.example strong { color: #1d4ed8; display: block; margin-bottom: 6px; }
+.myth-box { background: #fff7ed; border-left: 4px solid #f97316; border-radius: 8px;
+            padding: 14px 18px; margin: 12px 0; }
+.myth-box .myth { color: #c2410c; font-weight: 700; }
+.myth-box .reality { color: #166534; }
+.compare-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+.compare-table th { background: #1e3a8a; color: #fff; padding: 12px; text-align: left; }
+.compare-table td { padding: 11px 12px; border-bottom: 1px solid #e2e8f0; }
+.compare-table tr:nth-child(even) td { background: #f8fafc; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size:.8rem;
+         font-weight:700; margin-right:6px; }
+.badge-blue  { background:#dbeafe; color:#1d4ed8; }
+.badge-green { background:#dcfce7; color:#166534; }
+.badge-red   { background:#fee2e2; color:#991b1b; }
+.badge-orange{ background:#ffedd5; color:#9a3412; }
+.adv  { background:#dcfce7; border-left:4px solid #22c55e; border-radius:8px;
+        padding:14px 18px; margin:10px 0; }
+.dis  { background:#fee2e2; border-left:4px solid #ef4444; border-radius:8px;
+        padding:14px 18px; margin:10px 0; }
+.phase-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+              gap:18px; margin:18px 0; }
+.phase-card { background:#fff; border:1px solid #bfdbfe; border-radius:10px;
+              padding:18px; border-top:4px solid #3b82f6; }
+.phase-card h4 { color:#1d4ed8; margin-top:0; }
+footer { text-align:center; padding:30px; background:#1e3a8a; color:#94a3b8;
+         font-size:.9rem; margin-top:40px; }
+.q-num { display:inline-block; background:#1e3a8a; color:#fff; border-radius:50%;
+         width:30px; height:30px; line-height:30px; text-align:center;
+         font-weight:700; font-size:.85rem; margin-right:10px; flex-shrink:0; }
+.q-item { display:flex; align-items:flex-start; margin-bottom:16px; }
+.q-text { flex:1; line-height:1.7; }
+.ans   { background:#f0fdf4; border-left:3px solid #22c55e; padding:6px 12px;
+         border-radius:4px; margin-top:6px; font-size:.9rem; color:#166534; }
+.tf-true  { color:#166534; font-weight:700; }
+.tf-false { color:#991b1b; font-weight:700; }
+.opt { margin:4px 0 4px 10px; font-size:.95rem; }
+.opt.correct { color:#166534; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <h1>CSE 417: Software Engineering &amp; Design Patterns</h1>
+  <p>Metropolitan University &mdash; Md. Mushtaq Shahriyar Rafee</p>
+</header>
+
+<nav>
+  <a href="index.html">🏠 Home</a>
+  <a href="lecture1.html">L1: Intro</a>
+  <a href="lecture2.html">L2: SDLC</a>
+  <a href="lecture3.html" class="active">L3: Myths & Ethics</a>
+  <a href="lecture4.html">L4: Waterfall</a>
+  <a href="lecture5.html">L5: V-Shape & Incremental</a>
+  <a href="questions.html">📝 Questions</a>
+</nav>
+
+<main>
+<h2>Lecture 3: Software Myths, General Issues &amp; Ethics</h2>
+
+<div class="card">
+  <h3>1. Software Myths</h3>
+  <p>A <strong>Software Myth</strong> is a wrong belief about software and the process used to build it.
+  These misunderstandings lead to poor decisions and project failures.</p>
+
+  <h4>Management Myths</h4>
+
+  <div class="myth-box">
+    <p class="myth">Myth 1: "We have a book of standards and procedures. Won't that give my people everything they need?"</p>
+    <p class="reality">Reality: The book may exist, but is it used? Is it current? Does it reflect modern practices?
+    Is it complete and adaptable? A dusty standards document that nobody reads provides zero value.</p>
+    <div class="example" style="margin-top:8px;">
+      <strong>💡 Example:</strong> Many companies have ISO documentation that was written in 2005 and never updated —
+      developers don't even know it exists.
+    </div>
+  </div>
+
+  <div class="myth-box">
+    <p class="myth">Myth 2: "If we fall behind schedule, we can add more programmers and catch up (The Mongolian Horde concept)."</p>
+    <p class="reality">Reality: Software development is not a mechanical manufacturing process. Adding new
+    programmers to a late project makes it even later — new people need time to learn the codebase,
+    and experienced developers must spend time training them instead of coding.</p>
+    <div class="example" style="margin-top:8px;">
+      <strong>💡 Brook's Law:</strong> "Adding manpower to a late software project makes it later." —
+      Fred Brooks, <em>The Mythical Man-Month</em>
+    </div>
+  </div>
+
+  <h4>Customer Myths</h4>
+
+  <div class="myth-box">
+    <p class="myth">Myth 3: "A general statement of objectives is sufficient to begin writing programs — we can fill in details later."</p>
+    <p class="reality">Reality: An ambiguous "statement of objectives" is a recipe for disaster. Clear,
+    unambiguous requirements are developed only through effective and continuous communication between
+    customer and developer.</p>
+    <div class="example" style="margin-top:8px;">
+      <strong>💡 Example:</strong> Client says "I want a fast website." Developer builds it on expensive servers.
+      Client meant "fast to navigate" not "fast to load." Miscommunication wastes money.
+    </div>
+  </div>
+
+  <div class="myth-box">
+    <p class="myth">Myth 4: "Software requirements continually change, but change can be easily accommodated because software is flexible."</p>
+    <p class="reality">Reality: While software requirements do change, the impact varies with timing:
+    early changes (before design/coding) cost little, but late changes (after coding is complete) can
+    cost 100x more.</p>
+  </div>
+
+  <h4>Practitioner's Myths</h4>
+
+  <div class="myth-box">
+    <p class="myth">Myth 5: "Once we write the program and get it to work, our job is done."</p>
+    <p class="reality">Reality: "The sooner you begin 'writing code,' the longer it'll take you to get done."
+    Maintenance consumes 60-80% of the total software lifetime cost.</p>
+  </div>
+
+  <div class="myth-box">
+    <p class="myth">Myth 6: "Until I get the program 'running' I have no way of assessing its quality."</p>
+    <p class="reality">Reality: <strong>Technical reviews</strong> can be applied from the very beginning of a
+    project to detect defects early. Code review, design review, and requirements review all improve quality
+    before a single line runs.</p>
+    <div class="example" style="margin-top:8px;">
+      <strong>💡 Example:</strong> Google conducts mandatory code reviews before merging any code to detect
+      bugs at the cheapest possible stage.
+    </div>
+  </div>
+
+  <div class="myth-box">
+    <p class="myth">Myth 7: "The only deliverable work product for a successful project is the working program."</p>
+    <p class="reality">Reality: A working program is only ONE part of a software configuration. A variety
+    of work products — plans, documents, models, test cases — provide the foundation for successful
+    project support.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>2. General Issues Affecting Software</h3>
+  <p>Three broad challenges affect all software projects today:</p>
+
+  <div class="phase-grid">
+    <div class="phase-card">
+      <h4>Issue 1: Heterogeneity</h4>
+      <p>Systems must operate as <strong>distributed systems across networks</strong> that include
+      different types of computers and mobile devices. New software must integrate with old
+      <em>legacy systems</em> written in different programming languages.</p>
+      <p><strong>Legacy System:</strong> Any outdated computing system (hardware or software) that is
+      still in use.</p>
+      <div class="example" style="margin-top:8px;">
+        <strong>Example:</strong> A modern React web app must connect to a 1990s COBOL banking backend.
+        Bridging these systems is a heterogeneity challenge.
+      </div>
+    </div>
+    <div class="phase-card">
+      <h4>Issue 2: Business &amp; Social Change</h4>
+      <p>Businesses and society change quickly. Organizations need to <strong>replace old systems
+      with updated ones</strong>, but traditional software engineering is too slow — delivery often
+      takes longer than planned.</p>
+      <div class="example" style="margin-top:8px;">
+        <strong>Example:</strong> COVID-19 forced companies to move to remote work overnight. Software
+        teams that couldn't adapt quickly lost business.
+      </div>
+    </div>
+    <div class="phase-card">
+      <h4>Issue 3: Security &amp; Trust</h4>
+      <p>As software is intertwined with all aspects of our lives, we must ensure
+      <strong>software is trustworthy and secure</strong>. Malicious users must not be able to
+      attack our software or compromise information security.</p>
+      <div class="example" style="margin-top:8px;">
+        <strong>Example:</strong> The 2017 WannaCry ransomware attack infected 200,000 computers
+        in 150 countries because of poor security practices in software.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>3. Software Engineering Ethics</h3>
+  <p>Software engineers must behave in an <strong>honest and ethically responsible</strong> way.
+  The key ethical responsibilities are:</p>
+
+  <h4>1. Confidentiality</h4>
+  <p>Respect the confidentiality of your employers or clients,
+  <strong>irrespective of whether a formal agreement has been signed</strong> or not.</p>
+  <div class="example">
+    <strong>💡 Example:</strong> If you work on a client's new product idea, you must not share that
+    idea with competitors even after leaving the company.
+  </div>
+
+  <h4>2. Competence</h4>
+  <ul>
+    <li>You should <strong>not misrepresent your level of competence</strong>.</li>
+    <li>You should <strong>not knowingly accept work</strong> that is outside your competence.</li>
+  </ul>
+  <div class="example">
+    <strong>💡 Example:</strong> If a client asks you to build a nuclear reactor control system
+    and you have no safety-critical systems experience, you must decline or bring in experts.
+  </div>
+
+  <h4>3. Intellectual Property Rights</h4>
+  <ul>
+    <li>Be aware of <strong>local laws governing intellectual property</strong> (patents, copyright).</li>
+    <li>Ensure the intellectual property of employers and clients is protected.</li>
+  </ul>
+  <p><em>IPR (Intellectual Property Rights)</em> are the rights given to persons over the
+  creations of their minds.</p>
+
+  <h4>4. Computer Misuse</h4>
+  <p>Do not use technical skills to <strong>misuse other people's computers</strong>.
+  Computer misuse ranges from trivial (playing games on employer's machine) to extremely serious
+  (spreading viruses or malware).</p>
+  <div class="example">
+    <strong>💡 Example:</strong> Using your systems-admin access to read other employees' private emails
+    is a clear ethical and legal violation.
+  </div>
+</div>
+</main>
+<footer>CSE 417 &mdash; Software Engineering &amp; Design Patterns &mdash; All Rights Reserved</footer>
+</body>
+</html>

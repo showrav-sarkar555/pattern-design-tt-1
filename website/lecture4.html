@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lecture 4 | SE Notes</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; color: #222; }
+header { background: linear-gradient(135deg,#1a237e,#283593); color: #fff; padding: 24px 40px; }
+header h1 { font-size: 2rem; }
+header p  { opacity: .85; margin-top: 6px; }
+nav { background: #1e3a8a; display: flex; flex-wrap: wrap; gap: 4px; padding: 10px 40px; }
+nav a { color: #cbd5e1; text-decoration: none; padding: 7px 14px; border-radius: 6px;
+        font-size: .9rem; transition: background .2s; }
+nav a:hover, nav a.active { background: #3b82f6; color: #fff; }
+main { max-width: 1100px; margin: 30px auto; padding: 0 20px 60px; }
+h2 { color: #1a237e; border-left: 5px solid #3b82f6; padding-left: 14px;
+     margin: 36px 0 14px; font-size: 1.55rem; }
+h3 { color: #1e3a8a; margin: 24px 0 10px; font-size: 1.2rem; }
+h4 { color: #2563eb; margin: 18px 0 8px; }
+p  { line-height: 1.8; margin-bottom: 12px; }
+ul,ol { margin: 10px 0 16px 26px; line-height: 1.9; }
+.card { background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.08);
+        padding: 28px 32px; margin-bottom: 28px; }
+.example { background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 8px;
+           padding: 16px 20px; margin: 14px 0; }
+.example strong { color: #1d4ed8; display: block; margin-bottom: 6px; }
+.myth-box { background: #fff7ed; border-left: 4px solid #f97316; border-radius: 8px;
+            padding: 14px 18px; margin: 12px 0; }
+.myth-box .myth { color: #c2410c; font-weight: 700; }
+.myth-box .reality { color: #166534; }
+.compare-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+.compare-table th { background: #1e3a8a; color: #fff; padding: 12px; text-align: left; }
+.compare-table td { padding: 11px 12px; border-bottom: 1px solid #e2e8f0; }
+.compare-table tr:nth-child(even) td { background: #f8fafc; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size:.8rem;
+         font-weight:700; margin-right:6px; }
+.badge-blue  { background:#dbeafe; color:#1d4ed8; }
+.badge-green { background:#dcfce7; color:#166534; }
+.badge-red   { background:#fee2e2; color:#991b1b; }
+.badge-orange{ background:#ffedd5; color:#9a3412; }
+.adv  { background:#dcfce7; border-left:4px solid #22c55e; border-radius:8px;
+        padding:14px 18px; margin:10px 0; }
+.dis  { background:#fee2e2; border-left:4px solid #ef4444; border-radius:8px;
+        padding:14px 18px; margin:10px 0; }
+.phase-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+              gap:18px; margin:18px 0; }
+.phase-card { background:#fff; border:1px solid #bfdbfe; border-radius:10px;
+              padding:18px; border-top:4px solid #3b82f6; }
+.phase-card h4 { color:#1d4ed8; margin-top:0; }
+footer { text-align:center; padding:30px; background:#1e3a8a; color:#94a3b8;
+         font-size:.9rem; margin-top:40px; }
+.q-num { display:inline-block; background:#1e3a8a; color:#fff; border-radius:50%;
+         width:30px; height:30px; line-height:30px; text-align:center;
+         font-weight:700; font-size:.85rem; margin-right:10px; flex-shrink:0; }
+.q-item { display:flex; align-items:flex-start; margin-bottom:16px; }
+.q-text { flex:1; line-height:1.7; }
+.ans   { background:#f0fdf4; border-left:3px solid #22c55e; padding:6px 12px;
+         border-radius:4px; margin-top:6px; font-size:.9rem; color:#166534; }
+.tf-true  { color:#166534; font-weight:700; }
+.tf-false { color:#991b1b; font-weight:700; }
+.opt { margin:4px 0 4px 10px; font-size:.95rem; }
+.opt.correct { color:#166534; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <h1>CSE 417: Software Engineering &amp; Design Patterns</h1>
+  <p>Metropolitan University &mdash; Md. Mushtaq Shahriyar Rafee</p>
+</header>
+
+<nav>
+  <a href="index.html">🏠 Home</a>
+  <a href="lecture1.html">L1: Intro</a>
+  <a href="lecture2.html">L2: SDLC</a>
+  <a href="lecture3.html">L3: Myths & Ethics</a>
+  <a href="lecture4.html" class="active">L4: Waterfall</a>
+  <a href="lecture5.html">L5: V-Shape & Incremental</a>
+  <a href="questions.html">📝 Questions</a>
+</nav>
+
+<main>
+<h2>Lecture 4: Software Process Models — Waterfall</h2>
+
+<div class="card">
+  <h3>1. Introduction</h3>
+  <p>A <strong>Software Process</strong> is a set of related activities that leads to the production
+  of a software product.</p>
+  <p>A <strong>Software Process Model</strong> is a simplified representation of a software process —
+  a blueprint for how teams organize their work.</p>
+  <div class="example">
+    <strong>💡 Analogy:</strong> A software process model is like a recipe. Just as a recipe shows
+    steps to bake a cake (mix, bake, frost), a process model shows steps to build software.
+  </div>
+</div>
+
+<div class="card">
+  <h3>2. The Waterfall Model</h3>
+  <p>The <strong>first and most classic SDLC model</strong>. It follows a strictly linear, sequential
+  approach where:</p>
+  <ul>
+    <li>The output of the current phase = input for the next phase</li>
+    <li>The next phase starts <em>only after</em> the previous phase is completed and signed off</li>
+    <li>There is <strong>no going back</strong> in the classic version</li>
+  </ul>
+  <div class="example">
+    <strong>💡 Analogy:</strong> Like a waterfall — water flows down from one level to the next and
+    cannot flow back up. Once you leave a phase, you cannot return.
+  </div>
+
+  <h3>Waterfall Phases in Detail</h3>
+  <div class="phase-grid">
+    <div class="phase-card">
+      <h4>Phase 1: Feasibility Study</h4>
+      <p>Assessment of the practicality of a proposed project. Helps decision-makers determine
+      whether a project or investment is likely to be successful.</p>
+    </div>
+    <div class="phase-card">
+      <h4>Phase 2: Requirements Analysis &amp; Specification</h4>
+      <p>System's services, constraints, and goals are established via consultation with system users.
+      These are defined in detail and serve as the <strong>system specification</strong>.</p>
+    </div>
+    <div class="phase-card">
+      <h4>Phase 3: System &amp; Software Design</h4>
+      <p>Transform requirements from SRS into a form that permits coding. Define the overall
+      <strong>software architecture</strong> with high-level and detailed design.</p>
+    </div>
+    <div class="phase-card">
+      <h4>Phase 4: Coding &amp; Unit Testing</h4>
+      <p>System is developed in small programs called <strong>units</strong>, which are integrated
+      in the next phase. Unit testing is done to verify each unit works correctly.</p>
+    </div>
+    <div class="phase-card">
+      <h4>Phase 5: Integration &amp; System Testing</h4>
+      <p>All units are integrated into a system. The <strong>entire system is then tested</strong>
+      for any faults and failures across the complete integrated product.</p>
+    </div>
+    <div class="phase-card">
+      <h4>Phase 6: Maintenance &amp; Operation</h4>
+      <p>The <strong>longest phase</strong>. System is installed and put into practical use.
+      Errors found after release are corrected, system units are improved, and new requirements
+      are addressed.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <strong>💡 Waterfall Example — Library Management System</strong>
+    <ol>
+      <li><strong>Feasibility:</strong> Library has 5,000 books and needs digital cataloging. Budget OK.</li>
+      <li><strong>Requirements:</strong> SRS written: member registration, book issue/return, fine calculation, search.</li>
+      <li><strong>Design:</strong> ER diagram, system flowchart, UI mockups designed.</li>
+      <li><strong>Coding:</strong> Each module coded: MemberModule, BookModule, FineModule.</li>
+      <li><strong>Testing:</strong> All modules integrated &amp; tested together. 12 bugs found and fixed.</li>
+      <li><strong>Maintenance:</strong> After 6 months, an e-book feature is added.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="card">
+  <h3>3. When to Use Waterfall Model</h3>
+  <ul>
+    <li>Requirements are <strong>clear, well-documented, and fixed</strong></li>
+    <li>Requirements are unlikely to change radically during development</li>
+    <li>Dynamic/unstable technologies are NOT involved</li>
+    <li>No ambiguous requirements</li>
+    <li>Project is <strong>short</strong></li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>4. Advantages of Waterfall Model</h3>
+  <div class="adv">
+    <ul>
+      <li>Simple and easy to understand and use</li>
+      <li>Requirements are simple and explicitly declared</li>
+      <li>Requirements remain unchanged throughout development</li>
+      <li>Start and end points for each phase are fixed — easy to track progress</li>
+      <li>Release date and final cost can be determined <strong>before development begins</strong></li>
+      <li>Works well for small projects</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <h3>5. Disadvantages of Waterfall Model</h3>
+  <div class="dis">
+    <ul>
+      <li>Not suitable for significant and complex projects</li>
+      <li>Cannot accept changes in requirements during development</li>
+      <li>Difficult to go back to a previous phase</li>
+      <li>Testing is done late — risks and challenges aren't identified early</li>
+      <li><strong>No working software produced until late</strong> in the lifecycle</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <h3>6. Iterative Waterfall Model</h3>
+  <p>An <strong>improved version</strong> of the Classic Waterfall Model. The key difference:</p>
+  <p><strong>Provides feedback paths from every phase to its preceding phases.</strong> When errors
+  are detected at a later phase, the feedback paths allow correcting errors committed during an
+  earlier phase, and these changes are reflected going forward.</p>
+  <p><em>Note:</em> There is no feedback path back to the <strong>Feasibility Study</strong> stage,
+  because once a project has been accepted, it is not easily abandoned.</p>
+
+  <div class="adv">
+    <h4>Advantages:</h4>
+    <ul>
+      <li>Feedback path allows error correction between phases</li>
+      <li>Simple to understand and use</li>
+      <li>Clear separation of phases for better planning</li>
+      <li>Less time spent on documentation</li>
+    </ul>
+  </div>
+
+  <div class="dis">
+    <h4>Disadvantages:</h4>
+    <ul>
+      <li>All requirements must still be stated before development — hard to incorporate late changes</li>
+      <li><strong>No incremental delivery</strong> — customer waits for the full product</li>
+      <li>Overlapping of phases not supported</li>
+      <li>No built-in mechanism for <strong>risk handling</strong></li>
+      <li>Limited customer interactions (only at start and end)</li>
+    </ul>
+  </div>
+</div>
+</main>
+<footer>CSE 417 &mdash; Software Engineering &amp; Design Patterns &mdash; All Rights Reserved</footer>
+</body>
+</html>

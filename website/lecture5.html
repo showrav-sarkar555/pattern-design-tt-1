@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lecture 5 | SE Notes</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4f8; color: #222; }
+header { background: linear-gradient(135deg,#1a237e,#283593); color: #fff; padding: 24px 40px; }
+header h1 { font-size: 2rem; }
+header p  { opacity: .85; margin-top: 6px; }
+nav { background: #1e3a8a; display: flex; flex-wrap: wrap; gap: 4px; padding: 10px 40px; }
+nav a { color: #cbd5e1; text-decoration: none; padding: 7px 14px; border-radius: 6px;
+        font-size: .9rem; transition: background .2s; }
+nav a:hover, nav a.active { background: #3b82f6; color: #fff; }
+main { max-width: 1100px; margin: 30px auto; padding: 0 20px 60px; }
+h2 { color: #1a237e; border-left: 5px solid #3b82f6; padding-left: 14px;
+     margin: 36px 0 14px; font-size: 1.55rem; }
+h3 { color: #1e3a8a; margin: 24px 0 10px; font-size: 1.2rem; }
+h4 { color: #2563eb; margin: 18px 0 8px; }
+p  { line-height: 1.8; margin-bottom: 12px; }
+ul,ol { margin: 10px 0 16px 26px; line-height: 1.9; }
+.card { background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.08);
+        padding: 28px 32px; margin-bottom: 28px; }
+.example { background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 8px;
+           padding: 16px 20px; margin: 14px 0; }
+.example strong { color: #1d4ed8; display: block; margin-bottom: 6px; }
+.myth-box { background: #fff7ed; border-left: 4px solid #f97316; border-radius: 8px;
+            padding: 14px 18px; margin: 12px 0; }
+.myth-box .myth { color: #c2410c; font-weight: 700; }
+.myth-box .reality { color: #166534; }
+.compare-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+.compare-table th { background: #1e3a8a; color: #fff; padding: 12px; text-align: left; }
+.compare-table td { padding: 11px 12px; border-bottom: 1px solid #e2e8f0; }
+.compare-table tr:nth-child(even) td { background: #f8fafc; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size:.8rem;
+         font-weight:700; margin-right:6px; }
+.badge-blue  { background:#dbeafe; color:#1d4ed8; }
+.badge-green { background:#dcfce7; color:#166534; }
+.badge-red   { background:#fee2e2; color:#991b1b; }
+.badge-orange{ background:#ffedd5; color:#9a3412; }
+.adv  { background:#dcfce7; border-left:4px solid #22c55e; border-radius:8px;
+        padding:14px 18px; margin:10px 0; }
+.dis  { background:#fee2e2; border-left:4px solid #ef4444; border-radius:8px;
+        padding:14px 18px; margin:10px 0; }
+.phase-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+              gap:18px; margin:18px 0; }
+.phase-card { background:#fff; border:1px solid #bfdbfe; border-radius:10px;
+              padding:18px; border-top:4px solid #3b82f6; }
+.phase-card h4 { color:#1d4ed8; margin-top:0; }
+footer { text-align:center; padding:30px; background:#1e3a8a; color:#94a3b8;
+         font-size:.9rem; margin-top:40px; }
+.q-num { display:inline-block; background:#1e3a8a; color:#fff; border-radius:50%;
+         width:30px; height:30px; line-height:30px; text-align:center;
+         font-weight:700; font-size:.85rem; margin-right:10px; flex-shrink:0; }
+.q-item { display:flex; align-items:flex-start; margin-bottom:16px; }
+.q-text { flex:1; line-height:1.7; }
+.ans   { background:#f0fdf4; border-left:3px solid #22c55e; padding:6px 12px;
+         border-radius:4px; margin-top:6px; font-size:.9rem; color:#166534; }
+.tf-true  { color:#166534; font-weight:700; }
+.tf-false { color:#991b1b; font-weight:700; }
+.opt { margin:4px 0 4px 10px; font-size:.95rem; }
+.opt.correct { color:#166534; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <h1>CSE 417: Software Engineering &amp; Design Patterns</h1>
+  <p>Metropolitan University &mdash; Md. Mushtaq Shahriyar Rafee</p>
+</header>
+
+<nav>
+  <a href="index.html">🏠 Home</a>
+  <a href="lecture1.html">L1: Intro</a>
+  <a href="lecture2.html">L2: SDLC</a>
+  <a href="lecture3.html">L3: Myths & Ethics</a>
+  <a href="lecture4.html">L4: Waterfall</a>
+  <a href="lecture5.html" class="active">L5: V-Shape & Incremental</a>
+  <a href="questions.html">📝 Questions</a>
+</nav>
+
+<main>
+<h2>Lecture 5: V-Shaped Model &amp; Incremental Model</h2>
+
+<div class="card">
+  <h3>1. Verification vs Validation</h3>
+  <table class="compare-table">
+    <tr><th>Verification</th><th>Validation</th></tr>
+    <tr><td>Process of determining if software is <strong>designed and developed as per specifications</strong></td>
+        <td>Process of checking if the software (end product) has <strong>met the client's true needs and expectations</strong></td></tr>
+    <tr><td>Are we <em>building the product right?</em></td>
+        <td>Are we <em>building the right product?</em></td></tr>
+    <tr><td>Static analysis method (review) — <strong>without executing code</strong></td>
+        <td>Dynamic analysis method — <strong>done by executing code</strong></td></tr>
+    <tr><td>Examples: Code reviews, inspections, walkthroughs</td>
+        <td>Examples: Unit testing, integration testing, system testing, acceptance testing</td></tr>
+  </table>
+  <div class="example">
+    <strong>💡 Example:</strong> A hospital software is verified when the design matches the specification
+    documents. It is validated when an actual doctor tests it and confirms it meets their workflow needs.
+  </div>
+</div>
+
+<div class="card">
+  <h3>2. V-Shaped Model (Verification &amp; Validation Model)</h3>
+  <p>The V-Shaped Model is an <strong>extension of the Waterfall Model</strong> where testing is
+  associated with <em>every phase</em> of the development lifecycle.</p>
+
+  <h4>Key Characteristics:</h4>
+  <ul>
+    <li>Linear like Waterfall — next phase starts only after previous phase is complete</li>
+    <li><strong>Testing is planned in parallel</strong> with the corresponding development phase</li>
+    <li>Left side (descending): Development phases (Verification)</li>
+    <li>Right side (ascending): Testing phases (Validation)</li>
+    <li>The bottom of the V: Implementation/Coding</li>
+  </ul>
+
+  <h3>The V-Shape Phases</h3>
+
+  <div class="phase-grid">
+    <div class="phase-card" style="border-top-color:#8b5cf6;">
+      <h4>Requirements Analysis ↔ Acceptance Testing</h4>
+      <p>Management understands requirements from the customer's perspective.
+      <strong>Acceptance Test Plan</strong> is prepared here. After the software is built,
+      the user tests for acceptance. Output: mutually agreed requirements document.</p>
+    </div>
+    <div class="phase-card" style="border-top-color:#6366f1;">
+      <h4>System Design ↔ System Testing</h4>
+      <p>Overall system is designed — high-level picture including user, software, hardware,
+      interfaces, and database. <strong>System Test Plan</strong> is created at this stage.
+      System testing done just before product release.</p>
+      <div class="example" style="margin-top:6px;"><strong>Example:</strong> Design of the whole 3-story building.</div>
+    </div>
+    <div class="phase-card" style="border-top-color:#3b82f6;">
+      <h4>Architecture Design ↔ Integration Testing</h4>
+      <p>High-level software design. All technical decisions made here: programming language,
+      communication protocols, memory. <strong>Integration Test Plan</strong> created here.</p>
+      <div class="example" style="margin-top:6px;"><strong>Example:</strong> Design of each floor of the building.</div>
+    </div>
+    <div class="phase-card" style="border-top-color:#22c55e;">
+      <h4>Module Design ↔ Unit Testing</h4>
+      <p>Developers design individual modules. <strong>Unit Test Plan</strong> created here.
+      Low-level design documents generated. Unit tests verify each module works independently.</p>
+    </div>
+    <div class="phase-card" style="border-top-color:#f59e0b;">
+      <h4>Implementation (Coding)</h4>
+      <p>The bottom of the V. The actual code is written according to all design documents
+      created in previous phases. This is the only phase where coding happens.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <strong>💡 V-Model Example — Online Exam System</strong>
+    <ul>
+      <li><strong>Requirements:</strong> Students answer MCQs, auto-graded. → Plan: user acceptance test</li>
+      <li><strong>System Design:</strong> Web-based system, cloud database. → Plan: load test for 500 users</li>
+      <li><strong>Architecture:</strong> Python Flask, PostgreSQL, Redis. → Plan: API integration tests</li>
+      <li><strong>Module Design:</strong> QuestionModule, TimerModule, GradeModule. → Plan: unit tests per module</li>
+      <li><strong>Coding:</strong> All modules coded</li>
+      <li>← Unit tests executed → Integration tests → System tests → Acceptance tests</li>
+    </ul>
+  </div>
+
+  <h3>When to Use V-Shaped Model</h3>
+  <ul>
+    <li>Requirements are <strong>well-defined and not ambiguous</strong></li>
+    <li>Small to medium-sized projects with <strong>clearly defined and fixed requirements</strong></li>
+    <li>When sample technical resources with <strong>essential technical expertise</strong> are available</li>
+  </ul>
+
+  <div class="adv">
+    <h4>Advantages:</h4>
+    <ul>
+      <li>Simple and easy to understand</li>
+      <li>Testing methods (planning, test design) happen <strong>well before coding</strong> — saves time</li>
+      <li>Higher chance of success compared to Waterfall</li>
+      <li>Avoids downward flow of defects</li>
+      <li>Works well for small plans where requirements are easily understood</li>
+    </ul>
+  </div>
+  <div class="dis">
+    <h4>Disadvantages:</h4>
+    <ul>
+      <li>Not suitable for complex and object-oriented projects</li>
+      <li>If requirements change mid-way, test documents AND requirement documents must both be updated</li>
+      <li>Requires crystal-clear documentation</li>
+      <li>Very rigid and least flexible</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <h3>3. Incremental Model</h3>
+  <p>In the Incremental Model, requirements are divided into <strong>multiple standalone modules</strong>.
+  The software is built and delivered in <em>increments</em> — each increment adds functionality to the
+  previous one.</p>
+
+  <h4>How It Works:</h4>
+  <ul>
+    <li>Requirements divided into multiple standalone modules</li>
+    <li><strong>Module-by-module</strong> working approach</li>
+    <li>Every subsequent release adds function to the previous release</li>
+    <li>Each module goes through: communication → planning → modeling → construction → deployment</li>
+    <li><strong>First increment</strong> is often a core product (basic functionality)</li>
+    <li>Customer feedback from core system is addressed during later increments</li>
+    <li>Process repeated after delivery of each increment until complete product is produced</li>
+    <li><strong>Maximum customer interaction</strong> throughout</li>
+  </ul>
+
+  <div class="example">
+    <strong>💡 Incremental Model Example — Food Delivery App</strong>
+    <ul>
+      <li><strong>Increment 1 (Core):</strong> Restaurant listing + order placement — delivered &amp; tested</li>
+      <li><strong>Increment 2:</strong> Payment gateway integration — delivered &amp; tested</li>
+      <li><strong>Increment 3:</strong> Real-time order tracking with GPS — delivered &amp; tested</li>
+      <li><strong>Increment 4:</strong> Reviews and ratings system — delivered &amp; tested</li>
+      <li><strong>Increment 5:</strong> Loyalty points &amp; promo codes — delivered &amp; tested</li>
+    </ul>
+    Each increment is a working product. Customers use it and give feedback for the next increment.
+  </div>
+
+  <h3>When to Use Incremental Model</h3>
+  <ul>
+    <li>Project has a <strong>lengthy development schedule</strong></li>
+    <li>Software team is not very well skilled or trained</li>
+    <li>Customer demands a <strong>quick release</strong> of the product</li>
+    <li>When you want to deliver <strong>prioritized requirements first</strong></li>
+  </ul>
+
+  <div class="adv">
+    <h4>Advantages:</h4>
+    <ul>
+      <li>Errors are easy to recognize and fix</li>
+      <li>Easier to test and debug smaller increments</li>
+      <li><strong>Tolerates changing requirements</strong></li>
+      <li>Balances cost and manpower</li>
+      <li>Risk is managed during each iteration</li>
+      <li><strong>Client gets important functionality early</strong> — no need to wait for full product</li>
+    </ul>
+  </div>
+  <div class="dis">
+    <h4>Disadvantages:</h4>
+    <ul>
+      <li>Needs good planning to divide requirements into increments</li>
+      <li>Actual cost may exceed the estimated cost</li>
+      <li>A problem in one unit needs to be corrected in all units — time consuming</li>
+    </ul>
+  </div>
+
+  <h3>Comparison: Waterfall vs V-Model vs Incremental</h3>
+  <table class="compare-table">
+    <tr><th>Feature</th><th>Waterfall</th><th>V-Shaped</th><th>Incremental</th></tr>
+    <tr><td>Testing Phase</td><td>Only at end</td><td>Parallel with every phase</td><td>After each increment</td></tr>
+    <tr><td>Flexibility</td><td>Very rigid</td><td>Very rigid</td><td>Flexible</td></tr>
+    <tr><td>Customer interaction</td><td>Start &amp; end only</td><td>Start &amp; end only</td><td>Throughout</td></tr>
+    <tr><td>Delivery</td><td>Single delivery</td><td>Single delivery</td><td>Multiple deliveries</td></tr>
+    <tr><td>Risk management</td><td>Poor</td><td>Better (early testing)</td><td>Best</td></tr>
+    <tr><td>Best for</td><td>Clear, fixed, small projects</td><td>Small, testing-critical projects</td><td>Evolving, large projects</td></tr>
+  </table>
+</div>
+</main>
+<footer>CSE 417 &mdash; Software Engineering &amp; Design Patterns &mdash; All Rights Reserved</footer>
+</body>
+</html>
